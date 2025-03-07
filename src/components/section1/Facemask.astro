@@ -13,10 +13,11 @@ const { responsive } = Astro.props;
   .box-face_mask {
     
     position: absolute;
-    top: -106px;
+    top: -114px;
     right: 5px;
-    width: 200px;
+    width: 210px;
     overflow: hidden;
+    z-index: 0;
     @media (max-width: 768px) {
       display: none;
     }
@@ -26,7 +27,7 @@ const { responsive } = Astro.props;
     }
     &.animated {
       img {
-        animation: slide-up 4s cubic-bezier(0.075, 0.82, 0.165, 1);
+        animation: slide-up 4s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
       }
     }
     &.--mobile {
@@ -62,13 +63,14 @@ const { responsive } = Astro.props;
 
     // Animacion de subida de la mascarilla
     // 0 o 10 % de altura aleatoria
-    const arrayRandomY = [0, 10];
+    const arrayRandomY = [0, 5];
     const randomY = arrayRandomY[Math.floor(Math.random() * arrayRandomY.length)];
     faceMask.style.setProperty("--random-y", `${randomY}%`);
 
+
     // Animacion de desaparecido de la mascarilla
     const randomTime = Math.random() * (10000 - 5000) + 5000;
-
+  
     setTimeout(() => {
       faceMask.classList.add("animated");
 

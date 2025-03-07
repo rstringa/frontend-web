@@ -13,6 +13,7 @@ import Eye from "@components/section1/Eye.astro";
 
 <section class="section1">
   <div class="top">
+    <Eye fill="#787878" />
     <Frontend />
     <Facemask responsive="mobile" />
   </div>
@@ -29,7 +30,7 @@ import Eye from "@components/section1/Eye.astro";
       </div>
       <div class="lines">
         <img class="image-lines" src={linesImage.src} alt="" />
-        <Eye />
+        <Eye fill="var(--primary-color, #fff)" />
       </div>
       <Webdesign />
       <Facemask />
@@ -59,6 +60,12 @@ import Eye from "@components/section1/Eye.astro";
       z-index: 1;
       inset: 0;
       background: rgba(0, 0, 0, 0.9);
+    }
+    .eye {
+        position: absolute;
+        top: 27px;
+        right: 10%;
+        z-index: 5;
     }
     
   }

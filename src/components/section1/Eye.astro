@@ -1,4 +1,8 @@
-<div class="eye">
+---
+const { fill } = Astro.props;
+
+---
+<div class="eye" style={`--fill:${fill}`}> 
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="55"
@@ -8,13 +12,12 @@
     <defs>
       <style>
         .eye-border {
-          fill: var(--primary-color, #fff);
+          fill:var(--fill);
           stroke: #000;
           stroke-linecap: round;
           stroke-linejoin: round;
           stroke-width: 4.86556px;
         }
-
       </style>
     </defs>
     <g id="eye-group">
@@ -28,8 +31,9 @@
   </svg>
 </div>
 
+
 <script>
-  const iris = document.querySelector(".eye-circle");
+
   const angleFromCatetes = (a, b) => Math.atan(a / b);
   const calcHypotenuse = (a, b) => Math.sqrt(a * a + b * b);
 
@@ -81,7 +85,11 @@
   const onMouseMove = (event) => {
     const mouse = { x: event.clientX, y: event.clientY };
 
-    moveEye(iris, mouse);
+    const iris = document.querySelectorAll(".eye-circle");
+    iris.forEach(eye => {
+      moveEye(eye, mouse);
+    });
+    
 
   };
 
