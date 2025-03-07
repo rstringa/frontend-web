@@ -31,6 +31,7 @@ import Eye from "@components/section1/Eye.astro";
       <div class="lines">
         <img class="image-lines" src={linesImage.src} alt="" />
         <Eye fill="var(--primary-color, #fff)" />
+        <div class="contact-text"><a href="" title="Contact US">Contact us</a></div>
       </div>
       <Webdesign />
       <Facemask />
@@ -80,6 +81,36 @@ import Eye from "@components/section1/Eye.astro";
     align-items: center;
     overflow: hidden;
  
+  }
+  .contact-text {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 50px);
+    animation: glitch-text 5s cubic-bezier(0.175, 0.885, 0.32, 1.275)  infinite alternate;
+    a {
+        color:#111;
+        text-decoration: none;
+        text-transform: capitalize;
+        position: relative;
+        display: inline-flex;
+        font-weight: 900;
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #1111118e;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+            transform-origin: center left;
+        }
+        &:hover {
+                &:after {  transform: scaleX(100%); }
+        }
+        
+    }
   }
   .box-lines {
     margin-top: 5dvh;
@@ -153,6 +184,28 @@ import Eye from "@components/section1/Eye.astro";
     }
   }
  
+@keyframes glitch-text {
+    0% {
+        transform: translate(0, 0);
+        filter:blur(0px);
+    }
+    25% {
+        transform: translate(5px, -5px);
+        filter:blur(0px);
+    }
+    50% {
+        transform: translate(0, -10px);
+        filter:blur(20px);
+    }
+    75% {
+        transform: translate(-5px, -2px);
+        filter:blur(0px);
+    }
+    100% {
+        transform: translate(0, 0);
+        filter:blur(0px);
+    }
+}
 
   @keyframes rotate {
     from {
