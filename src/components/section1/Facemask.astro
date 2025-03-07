@@ -22,12 +22,15 @@ const { responsive } = Astro.props;
       display: none;
     }
     img {
+      --initial-up:80%;
       display: block;
-      transform: translateY(100%);
+      transform: translateY(var(--initial-up));
+      transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
     &.animated {
       img {
-        animation: slide-up 4s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+        transform: translateY(var(--random-y, 0));
+       /* animation: slide-up 4s cubic-bezier(0.075, 0.82, 0.165, 1) both; */
       }
     }
     &.--mobile {
@@ -43,24 +46,20 @@ const { responsive } = Astro.props;
   }
   @keyframes slide-up {
     0% {
-      transform: translateY(100%);
-    }
-    20% {
-      transform: translateY(var(--random-y, 0));
-    }
-    80% {
-      transform: translateY(var(--random-y, 0));
+      transform: translateY(var(--initial-up));
     }
     100% {
-      transform: translateY(100%);
+      transform: translateY(var(--random-y, 0));
     }
+  
   }
 </style>
 
 <script>
+  const faceMasks = document.querySelectorAll(".box-face_mask");
   function animateFaceMask(faceMask) {
     if (!faceMask) return;
-
+   
     // Animacion de subida de la mascarilla
     // 0 o 10 % de altura aleatoria
     const arrayRandomY = [0, 5];
@@ -69,26 +68,32 @@ const { responsive } = Astro.props;
 
 
     // Animacion de desaparecido de la mascarilla
-    const randomTime = Math.random() * (10000 - 5000) + 5000;
-  
+    const randomTime = Math.random() * (20000 - 5000) + 10000;
+    console.log(randomTime);
+
     setTimeout(() => {
       faceMask.classList.add("animated");
-
-      faceMask.addEventListener(
-        "animationend",
-        () => {
-          faceMask.classList.remove("animated");
-          animateFaceMask(faceMask); // Re-trigger the animation
-        },
-        { once: true }
-      );
+    }, randomTime * 1.5 );
+      
+    setTimeout(() => {
+      faceMask.classList.remove("animated");
+      animateFaceMask(faceMask)
     }, randomTime);
+    
   }
 
+
   document.addEventListener("DOMContentLoaded", () => {
-    const faceMasks = document.querySelectorAll(".box-face_mask");
+    
     faceMasks.forEach((faceMask) => {
+      faceMask.addEventListener("mouseover", () => {
+        faceMask.classList.add("animated");
+      });
+      faceMask.addEventListener("mouseleave", () => {
+        faceMask.classList.remove("animated");
+      });
       animateFaceMask(faceMask);
     });
   });
+
 </script>
