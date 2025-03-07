@@ -4,6 +4,7 @@ import Dev from "@components/section1/Dev.astro";
 import linesImage from "@assets/section1-bottom-lines.svg";
 import wheelOutside from "@assets/section1-wheel-outside.svg";
 import wheelInner from "@assets/section1-wheel-inner.svg";
+import Webdesign from "@components/section1/Webdesign.astro";
 import TypeEffect from "@components/section1/TypeEffect.astro";
 import TypeEffect1 from "@components/section1/TypeEffect1.astro";
 import Facemask from "@components/section1/Facemask.astro";
@@ -13,9 +14,6 @@ import Eye from "@components/section1/Eye.astro";
 <section class="section1">
   <div class="top">
     <Frontend />
-    <!-- <div class="box-face_mask --mobile">
-      <img class="face-mask" src={faceMask.src} alt="" />
-    </div> -->
     <Facemask responsive="mobile" />
   </div>
   <div class="bottom">
@@ -31,9 +29,9 @@ import Eye from "@components/section1/Eye.astro";
       </div>
       <div class="lines">
         <img class="image-lines" src={linesImage.src} alt="" />
-        <!-- <img class="eye" src={eyeImage.src} alt="" /> -->
         <Eye />
       </div>
+      <Webdesign />
       <Facemask />
     </div>
   </div>

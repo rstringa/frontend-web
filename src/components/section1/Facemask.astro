@@ -11,8 +11,9 @@ const { responsive } = Astro.props;
 
 <style>
   .box-face_mask {
+    
     position: absolute;
-    top: -107px;
+    top: -106px;
     right: 5px;
     width: 200px;
     overflow: hidden;
@@ -44,10 +45,10 @@ const { responsive } = Astro.props;
       transform: translateY(100%);
     }
     20% {
-      transform: translateY(0);
+      transform: translateY(var(--random-y, 0));
     }
     80% {
-      transform: translateY(0);
+      transform: translateY(var(--random-y, 0));
     }
     100% {
       transform: translateY(100%);
@@ -59,7 +60,14 @@ const { responsive } = Astro.props;
   function animateFaceMask(faceMask) {
     if (!faceMask) return;
 
-    const randomTime = Math.random() * (20000 - 5000) + 5000; // Random time between 5 and 20 seconds
+    // Animacion de subida de la mascarilla
+    // 0 o 10 % de altura aleatoria
+    const arrayRandomY = [0, 10];
+    const randomY = arrayRandomY[Math.floor(Math.random() * arrayRandomY.length)];
+    faceMask.style.setProperty("--random-y", `${randomY}%`);
+
+    // Animacion de desaparecido de la mascarilla
+    const randomTime = Math.random() * (10000 - 5000) + 5000;
 
     setTimeout(() => {
       faceMask.classList.add("animated");
