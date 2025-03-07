@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="53.52363" height="38.93521" viewBox="0 0 53.52363 38.93521">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 4.86556px;
+      }
+    </style>
+  </defs>
+  <title>section1-bottom-eye</title>
+  <g id="Capa_2" data-name="Capa 2">
+    <g id="Capa_1-2" data-name="Capa 1">
+      <path class="cls-1" d="M2.58484,20.31421a2.43276,2.43276,0,0,1,0-1.69321,26.15239,26.15239,0,0,1,48.354,0,2.43276,2.43276,0,0,1,0,1.69321,26.15239,26.15239,0,0,1-48.35395,0"/>
+      <circle cx="26.76181" cy="19.4676" r="7.29834"/>
+    </g>
+  </g>
+</svg>

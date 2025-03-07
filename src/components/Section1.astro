@@ -1,0 +1,162 @@
+---
+import Frontend from "@components/section1/Frontend.astro";
+import Dev from "@components/section1/Dev.astro";
+import linesImage from "@assets/section1-bottom-lines.svg";
+import wheelOutside from "@assets/section1-wheel-outside.svg";
+import wheelInner from "@assets/section1-wheel-inner.svg";
+import TypeEffect from "@components/section1/TypeEffect.astro";
+import TypeEffect1 from "@components/section1/TypeEffect1.astro";
+import Facemask from "@components/section1/Facemask.astro";
+import Eye from "@components/section1/Eye.astro";
+---
+
+<section class="section1">
+  <div class="top">
+    <Frontend />
+    <!-- <div class="box-face_mask --mobile">
+      <img class="face-mask" src={faceMask.src} alt="" />
+    </div> -->
+    <Facemask responsive="mobile" />
+  </div>
+  <div class="bottom">
+    <Dev />
+    <TypeEffect1 />
+    <div class="box-lines">
+      <div class="box-type_effect">
+        <span>Hi, </span><TypeEffect />
+      </div>
+      <div class="wheel">
+        <img class="wheel-outside" src={wheelOutside.src} alt="" />
+        <img class="wheel-inner" src={wheelInner.src} alt="" />
+      </div>
+      <div class="lines">
+        <img class="image-lines" src={linesImage.src} alt="" />
+        <!-- <img class="eye" src={eyeImage.src} alt="" /> -->
+        <Eye />
+      </div>
+      <Facemask />
+    </div>
+  </div>
+</section>
+
+<style>
+  .section1 {
+    --primary-color: #ff9500;
+    overflow-y: clip;
+    img {
+      max-width: 100%;
+    }
+  }
+  .top {
+    background: url(../assets/section1-top-bg-50.webp) no-repeat center;
+    background-size: cover;
+    width: 100vw;
+    height: 40dvh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+    }
+    
+  }
+
+  .bottom {
+    background: #ff9500;
+    width: 100vw;
+    height: 60dvh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+ 
+  }
+  .box-lines {
+    margin-top: 5dvh;
+    background: url("../assets/section1-blurtext.png") no-repeat right 10px;
+    background-size: contain;
+    position: relative;
+    @media (max-width: 767px) {
+      aspect-ratio: 16/9;
+    }
+    .lines {
+      position: relative;
+      overflow: hidden;
+      max-width: 100vw;
+      .image-lines {
+        min-width: 1250px;
+      }
+      .eye {
+        position: absolute;
+        top: 27px;
+        left: calc(42% + 5px);
+        @media (max-width: 1210px) {
+          left: calc(50%);
+          top: 0;
+        }
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+    }
+    .wheel {
+      position: absolute;
+      bottom: -4vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      left: 5vw;
+      width: 150px;
+      @media (max-width: 1024px) {
+        bottom: 0vh;
+        width: 130px;
+      }
+      .wheel-outside {
+        width: 100%;
+        height: 100%;
+        animation: rotate 10s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+        transform-origin: center;
+      }
+      .wheel-inner {
+        position: absolute;
+        top: 0;
+        left: -15px;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+      }
+    }
+  }
+  .box-type_effect {
+    display: flex;
+    position: absolute;
+    left: 70px;
+    align-items: center;
+    justify-content: center;
+    span {
+      padding-right: 5px;
+    }
+    p {
+      background-color: #111;
+      color: #fff;
+      padding: 0 5px;
+    }
+  }
+ 
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+

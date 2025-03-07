@@ -1,0 +1,84 @@
+---
+import faceMask from "@assets/face-mask-bn.png";
+const { responsive } = Astro.props;
+---
+
+<div
+  class={responsive === "mobile" ? "box-face_mask --mobile" : "box-face_mask"}
+>
+  <img class="face-mask" src={faceMask.src} alt="" />
+</div>
+
+<style>
+  .box-face_mask {
+    position: absolute;
+    top: -107px;
+    right: 5px;
+    width: 200px;
+    overflow: hidden;
+    @media (max-width: 768px) {
+      display: none;
+    }
+    img {
+      display: block;
+      transform: translateY(100%);
+    }
+    &.animated {
+      img {
+        animation: slide-up 4s cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
+    }
+    &.--mobile {
+      display: none;
+      @media (max-width: 768px) {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        z-index: 2;
+        top: auto;
+      }
+    }
+  }
+  @keyframes slide-up {
+    0% {
+      transform: translateY(100%);
+    }
+    20% {
+      transform: translateY(0);
+    }
+    80% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+</style>
+
+<script>
+  function animateFaceMask(faceMask) {
+    if (!faceMask) return;
+
+    const randomTime = Math.random() * (20000 - 5000) + 5000; // Random time between 5 and 20 seconds
+
+    setTimeout(() => {
+      faceMask.classList.add("animated");
+
+      faceMask.addEventListener(
+        "animationend",
+        () => {
+          faceMask.classList.remove("animated");
+          animateFaceMask(faceMask); // Re-trigger the animation
+        },
+        { once: true }
+      );
+    }, randomTime);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const faceMasks = document.querySelectorAll(".box-face_mask");
+    faceMasks.forEach((faceMask) => {
+      animateFaceMask(faceMask);
+    });
+  });
+</script>
