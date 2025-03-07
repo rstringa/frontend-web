@@ -1,8 +1,8 @@
 ---
 const { fill } = Astro.props;
-
 ---
-<div class="eye" style={`--fill:${fill}`}> 
+
+<div class="eye" style={`--fill:${fill}`}>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="55"
@@ -12,7 +12,7 @@ const { fill } = Astro.props;
     <defs>
       <style>
         .eye-border {
-          fill:var(--fill);
+          fill: var(--fill);
           stroke: #000;
           stroke-linecap: round;
           stroke-linejoin: round;
@@ -25,74 +25,110 @@ const { fill } = Astro.props;
         class="eye-border"
         d="M2.58484,20.31421a2.43276,2.43276,0,0,1,0-1.69321,26.15239,26.15239,0,0,1,48.354,0,2.43276,2.43276,0,0,1,0,1.69321,26.15239,26.15239,0,0,1-48.35395,0"
       ></path>
-      <circle cx="26.76181" cy="19.4676" r="7.29834" class="eye-circle" ></circle>
-      
+      <circle cx="26.76181" cy="19.4676" r="7.2" class="eye-circle"></circle>
     </g>
   </svg>
 </div>
-
+<style>
+  .eye-border.animated {
+    animation: close-eye 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2
+      forwards;
+  }
+  @keyframes close-eye {
+    0% {
+      fill: var(--fill);
+    }
+    50% {
+      fill: #000000;
+    }
+    100% {
+      fill: var(--fill);
+    }
+  }
+</style>
 
 <script>
+  function moveEye() {
+    const angleFromCatetes = (a, b) => Math.atan(a / b);
+    const calcHypotenuse = (a, b) => Math.sqrt(a * a + b * b);
 
-  const angleFromCatetes = (a, b) => Math.atan(a / b);
-  const calcHypotenuse = (a, b) => Math.sqrt(a * a + b * b);
+    const getEyeCoordinates = (eye) => {
+      const { x, y, width, height } = eye.getBoundingClientRect();
 
-  const getEyeCoordinates = (eye) => {
-    const { x, y, width, height } = eye.getBoundingClientRect();
+      return { x: x + width / 2, y: y + height / 2 };
+    };
 
-    return { x: x + width / 2, y: y + height / 2 };
-  };
+    const calcMaxMovement = (eye) => {
+      const eyeWidth = eye.getBoundingClientRect().width;
+      if (!eyeWidth) return;
+      return eyeWidth / 2;
+    };
 
-  const calcMaxMovement = (eye) => {
-    const eyeWidth = eye.getBoundingClientRect().width;
-    if (!eyeWidth) return;
-    return eyeWidth / 2;
-  };
+    const limitOffset = (offset, eye) => {
+      const maxMovement = calcMaxMovement(eye);
 
-  const limitOffset = (offset, eye) => {
-    const maxMovement = calcMaxMovement(eye);
+      if (!maxMovement) return;
+      if (calcHypotenuse(offset.x, offset.y) <= maxMovement) {
+        return { x: offset.x, y: offset.y };
+      }
 
-    if (!maxMovement) return;
-    if (calcHypotenuse(offset.x, offset.y) <= maxMovement) {
-      return { x: offset.x, y: offset.y };
-    }
+      const angle = angleFromCatetes(offset.y, offset.x);
+      let x = Math.cos(angle) * maxMovement;
+      let y = Math.sin(angle) * maxMovement;
+      x = offset.x < 0 ? -x : x;
+      y = offset.x < 0 ? -y : y;
 
-    const angle = angleFromCatetes(offset.y, offset.x);
-    let x = Math.cos(angle) * maxMovement;
-    let y = Math.sin(angle) * maxMovement;
-    x = offset.x < 0 ? -x : x;
-    y = offset.x < 0 ? -y : y;
+      return { x, y };
+    };
 
-    return { x, y };
-  };
+    const getEyeOffset = (eye, mouse) => {
+      const x = (mouse.x - eye.x) * 0.25;
+      const y = (mouse.y - eye.y) * 0.25;
 
-  const getEyeOffset = (eye, mouse) => {
-    const x = (mouse.x - eye.x) * 0.25;
-    const y = (mouse.y - eye.y) * 0.25;
+      return { x, y };
+    };
 
-    return { x, y };
-  };
+    const moveEye = (eye, mouse) => {
+      const center = getEyeCoordinates(eye);
+      const offset = getEyeOffset(center, mouse);
+      const limitedOffset = limitOffset(offset, eye);
 
-  const moveEye = (eye, mouse) => {
-    const center = getEyeCoordinates(eye);
-    const offset = getEyeOffset(center, mouse);
-    const limitedOffset = limitOffset(offset, eye);
+      // const iris = getIris(eye)
+      eye.style.transform = `translate(${limitedOffset?.x}px, ${limitedOffset?.y}px)`;
+    };
 
-    // const iris = getIris(eye)
-    eye.style.transform = `translate(${limitedOffset?.x}px, ${limitedOffset?.y}px)`;
-  };
+    const onMouseMove = (event) => {
+      const mouse = { x: event.clientX, y: event.clientY };
 
-  const onMouseMove = (event) => {
-    const mouse = { x: event.clientX, y: event.clientY };
+      const iris = document.querySelectorAll(".eye-circle");
+      iris.forEach((eye) => {
+        moveEye(eye, mouse);
+      });
+    };
 
-    const iris = document.querySelectorAll(".eye-circle");
-    iris.forEach(eye => {
-      moveEye(eye, mouse);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("touchmove", onMouseMove);
+  }
+
+  function closeEye() {
+    const eyeBorder = document.querySelectorAll(".eye-border");
+    eyeBorder.forEach((eye) => {
+      const randomTime = Math.random() * (20000 - 5000) + 5000;
+      setTimeout(() => {
+        eye.classList.add("animated");
+
+        eye.addEventListener(
+          "animationend",
+          () => {
+            eye.classList.remove("animated");
+            closeEye();
+          },
+          { once: true }
+        );
+      }, randomTime);
     });
-    
+  }
 
-  };
-
-  window.addEventListener("mousemove", onMouseMove);
-  window.addEventListener("touchmove", onMouseMove);
+  window.addEventListener("DOMContentLoaded", closeEye);
+  window.addEventListener("DOMContentLoaded", moveEye);
 </script>
