@@ -66,19 +66,21 @@ const { responsive } = Astro.props;
     const randomY = arrayRandomY[Math.floor(Math.random() * arrayRandomY.length)];
     faceMask.style.setProperty("--random-y", `${randomY}%`);
 
-
-    // Animacion de desaparecido de la mascarilla
+   // Animacion de desaparecido de la mascarilla
     const randomTime = Math.random() * (20000 - 5000) + 10000;
     console.log(randomTime);
 
     setTimeout(() => {
       faceMask.classList.add("animated");
+
+        setTimeout(() => {
+        faceMask.classList.remove("animated");
+        animateFaceMask(faceMask)
+      }, 1000 );
+
     }, randomTime * 1.5 );
       
-    setTimeout(() => {
-      faceMask.classList.remove("animated");
-      animateFaceMask(faceMask)
-    }, randomTime);
+    
     
   }
 
@@ -87,7 +89,6 @@ const { responsive } = Astro.props;
     
     faceMasks.forEach((faceMask) => {
       const faceMaskImg = faceMask.querySelector("img");
-      console.log(faceMaskImg);
       faceMaskImg?.addEventListener("mouseover", () => {
         faceMask.classList.add("animated");
       });
