@@ -31,8 +31,7 @@ const { fill } = Astro.props;
 </div>
 <style>
   .eye-border.animated {
-    animation: close-eye 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2
-      forwards;
+    animation: close-eye 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2;
   }
   @keyframes close-eye {
     0% {
@@ -48,6 +47,7 @@ const { fill } = Astro.props;
 </style>
 
 <script>
+    
   function moveEye() {
     const angleFromCatetes = (a, b) => Math.atan(a / b);
     const calcHypotenuse = (a, b) => Math.sqrt(a * a + b * b);
@@ -110,25 +110,32 @@ const { fill } = Astro.props;
     window.addEventListener("touchmove", onMouseMove);
   }
 
-  function closeEye() {
-    const eyeBorder = document.querySelectorAll(".eye-border");
-    eyeBorder.forEach((eye) => {
-      const randomTime = Math.random() * (20000 - 5000) + 5000;
-      setTimeout(() => {
-        eye.classList.add("animated");
+  const eyesBorders = document.querySelectorAll(".eye-border");
 
-        eye.addEventListener(
-          "animationend",
-          () => {
-            eye.classList.remove("animated");
-            closeEye();
-          },
-          { once: true }
-        );
-      }, randomTime);
-    });
+  function closeEye(eyeBorder) {
+      const randomCloseTime = Math.random() * (20000 - 5000) + 5000;
+      setTimeout(() => {
+        eyeBorder.classList.add("animated");
+          setTimeout(() => {
+            eyeBorder.classList.remove("animated");
+            closeEye(eyeBorder)
+          }, 750 );
+      }, randomCloseTime * 1.5 );
+
   }
 
-  window.addEventListener("DOMContentLoaded", closeEye);
+
+
+  window.addEventListener("DOMContentLoaded", 
+  () => {
+    eyesBorders.forEach((eyeBorder) => {
+      closeEye(eyeBorder);
+    });
+   
+  });
+  
   window.addEventListener("DOMContentLoaded", moveEye);
+
+ 
+
 </script>

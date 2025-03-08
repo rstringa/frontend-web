@@ -22,7 +22,7 @@ const { responsive } = Astro.props;
       display: none;
     }
     img {
-      --initial-up:80%;
+      --initial-up:60%;
       display: block;
       transform: translateY(var(--initial-up));
       transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -31,7 +31,7 @@ const { responsive } = Astro.props;
       img {
         transform: translateY(var(--random-y, 0));
        /* animation: slide-up 4s cubic-bezier(0.075, 0.82, 0.165, 1) both; */
-      }
+      }   
     }
     &.--mobile {
       display: none;
@@ -62,7 +62,7 @@ const { responsive } = Astro.props;
    
     // Animacion de subida de la mascarilla
     // 0 o 10 % de altura aleatoria
-    const arrayRandomY = [0, 5];
+    const arrayRandomY = [0];
     const randomY = arrayRandomY[Math.floor(Math.random() * arrayRandomY.length)];
     faceMask.style.setProperty("--random-y", `${randomY}%`);
 
@@ -86,10 +86,12 @@ const { responsive } = Astro.props;
   document.addEventListener("DOMContentLoaded", () => {
     
     faceMasks.forEach((faceMask) => {
-      faceMask.addEventListener("mouseover", () => {
+      const faceMaskImg = faceMask.querySelector("img");
+      console.log(faceMaskImg);
+      faceMaskImg?.addEventListener("mouseover", () => {
         faceMask.classList.add("animated");
       });
-      faceMask.addEventListener("mouseleave", () => {
+      faceMaskImg?.addEventListener("mouseleave", () => {
         faceMask.classList.remove("animated");
       });
       animateFaceMask(faceMask);
