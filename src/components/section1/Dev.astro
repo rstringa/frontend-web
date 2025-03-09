@@ -1,7 +1,7 @@
 <div class="image-dev">
   <svg width="556.07237" height="223.68213" viewBox="0 0 556.07237 223.68213">
     <defs>
-      <style></style>
+      
     </defs>
     <title>DEV</title>
 
@@ -72,13 +72,19 @@
       max-width: 50vw;
       aspect-ratio: 375/150;
       fill: #F5ECD5;
+      
+      @media (max-width: 768px) {
+        max-width: 100%;
+        height: auto;
+      }
     }
     & .letter{
       --translateY:0; 
       transform-origin: top center;
+
     } 
     & .letter.animated {
-      animation: dev-letter 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: dev-letter 0.75s cubic-bezier(.36,.41,0,.66);
     }
   }
   @keyframes dev-slide-down {
@@ -101,6 +107,7 @@
     }
     
   }
+
 </style>
 
 <script>
