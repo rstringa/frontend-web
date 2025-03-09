@@ -13,12 +13,15 @@
 	</body>
 </html>
 
-<style>
+<style is:global>
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		scroll-snap-type: y proximity; /* Activa el scroll snap en el eje Y */
+    	scroll-behavior: smooth; /* Suaviza la animación */
+		scroll-snap-points-y: repeat(3rem);
 	}
 	@font-face {
     font-family: 'OpenSans';
@@ -29,5 +32,9 @@
   
   body {
     font-family: 'OpenSans', sans-serif;
+  }
+  .section {
+		scroll-snap-align: start; /* Alinea el scroll snap al inicio del contenido */
+		
   }
 </style>

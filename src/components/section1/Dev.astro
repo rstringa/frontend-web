@@ -8,6 +8,8 @@ import devImage from "@assets/section1-dev.svg";
   alt="Dev"
   fetchpriority="high"
   loading="eager"
+  height="224"
+  width="100%"
 />
 
 <style>
@@ -16,10 +18,14 @@ import devImage from "@assets/section1-dev.svg";
     z-index: 2;
     top: 0;
     max-width: 50vw;
-    aspect-ratio: 556/223;
+    aspect-ratio: 375/150;
     transform: translateY(-100%);
     animation: dev-slide-down 1s 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
       forwards;
+   
+      @media (max-width: 768px) {
+        max-width: 100%;
+      }
   }
   @keyframes dev-slide-down {
     0% {

@@ -11,7 +11,7 @@ import Facemask from "@components/section1/Facemask.astro";
 import Eye from "@components/section1/Eye.astro";
 ---
 
-<section class="section1">
+<section class="section section1">
   <div class="top">
     <Eye fill="#787878" />
     <Frontend />
@@ -29,7 +29,7 @@ import Eye from "@components/section1/Eye.astro";
         <img class="wheel-inner" src={wheelInner.src} alt="" />
       </div>
       <div class="lines">
-        <img class="image-lines" src={linesImage.src} alt="" />
+        <img class="image-lines" src={linesImage.src} alt="" height="186" />
         <Eye fill="var(--primary-color, #fff)" />
         <div class="contact-text"><a href="" title="Contact US">Contact us</a></div>
       </div>
@@ -40,9 +40,10 @@ import Eye from "@components/section1/Eye.astro";
 </section>
 
 <style>
+
   .section1 {
     --primary-color: #ff9500;
-    overflow-y: clip;
+    overflow: clip;
     img {
       max-width: 100%;
     }
