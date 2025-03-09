@@ -12,12 +12,14 @@ import Eye from "@components/section1/Eye.astro";
 ---
 
 <section class="section section1">
+   
   <div class="top">
     <Eye fill="#787878" />
     <Frontend />
     <Facemask responsive="mobile" />
   </div>
   <div class="bottom">
+    <div class="vertical-lines"></div>
     <Dev />
     <TypeEffect1 />
     <div class="box-lines">
@@ -43,12 +45,14 @@ import Eye from "@components/section1/Eye.astro";
 
   .section1 {
     --primary-color: #ff9500;
+    --light-lines:#ffc107;
     overflow: clip;
    
     img {
       max-width: 100%;
     }
   }
+
   .top {
     background: url(../assets/section1-top-bg-50.webp) no-repeat center;
     background-size: cover;
@@ -57,6 +61,9 @@ import Eye from "@components/section1/Eye.astro";
     position: relative;
     display: flex;
     justify-content: center;
+    @media (max-width: 768px) {
+      height: 30dvh;
+    }
     &:after {
       content: "";
       position: absolute;
@@ -82,6 +89,23 @@ import Eye from "@components/section1/Eye.astro";
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    padding-bottom: 20px;
+    @media (max-width: 768px) {
+      height: 70dvh;
+    }
+           & .vertical-lines {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: calc(50%);
+            transform: translateX(-50%);
+            width: 1250px;
+            height: 100%;
+
+            border-left: 1px solid var(--light-lines);
+            border-right: 1px solid var(--light-lines);
+            pointer-events: none;
+        }
  
   }
   .contact-text {
@@ -92,6 +116,9 @@ import Eye from "@components/section1/Eye.astro";
     &:hover {
         animation-play-state: paused;
         animation-fill-mode: forwards;
+    }
+    @media (max-width: 768px) {
+      left: calc(50% - 25px);
     }
     a {
         color:#111;
@@ -140,12 +167,13 @@ import Eye from "@components/section1/Eye.astro";
     }
     .wheel {
       position: absolute;
-      bottom: -4vh;
+      bottom: -20px;
       display: flex;
       justify-content: center;
       align-items: center;
       left: 5vw;
-      width: 150px;
+      width: 135px;
+      animation: float-wheel 10s ease-out infinite;
       @media (max-width: 1024px) {
         bottom: 0vh;
         width: 130px;
@@ -159,7 +187,7 @@ import Eye from "@components/section1/Eye.astro";
       .wheel-inner {
         position: absolute;
         top: 0;
-        left: -15px;
+        left: -12px;
         width: 100%;
         height: 100%;
         z-index: 2;
@@ -208,9 +236,27 @@ import Eye from "@components/section1/Eye.astro";
   @keyframes rotate {
     from {
       transform: rotate(0deg);
+      filter: drop-shadow(5px 5px 10px #111);
+     
     }
     to {
       transform: rotate(360deg);
+      filter: drop-shadow(2px 2px 0px transparent);
+    }
+  }
+
+  @keyframes float-wheel {
+    0% {
+      transform: translateY(0);
+    
+    }
+    50% {
+      transform: translateY(-10px);
+    
+    }
+    100% {
+      transform: translateY(0);
+     
     }
   }
 </style>
