@@ -1,0 +1,35 @@
+<dotlottie-player src="https://lottie.host/f694f440-6615-48ba-8ff2-c620dcb781b8/wCz2s9SpPZ.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+
+<style>
+    dotlottie-player {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        @media (max-width: 768px) {
+            width: 200px!important;
+            height: 200px!important;
+            top: 30vh;
+        }
+    }
+</style>
+<script>
+
+    const dotLottie = document.querySelector("dotlottie-player");
+    document.addEventListener("mousemove", (event) => {
+        // Obtener el punto de la pantalla donde se encuentra el mouse
+        const mousePosition = getMousePosition(event);
+        console.log(mousePosition.x);
+        
+    });
+
+    function getMousePosition(event) {
+        const rect = event.target.getBoundingClientRect();
+        return {
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top,
+        };
+    }
+
+    
+</script>
