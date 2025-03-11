@@ -1,11 +1,14 @@
 <dotlottie-player src="https://lottie.host/f694f440-6615-48ba-8ff2-c620dcb781b8/wCz2s9SpPZ.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
 
 <style>
+
     dotlottie-player {
         position: absolute;
         z-index: 10;
         top: 0;
         left: 0;
+        filter: drop-shadow(2px 20px 6px black);
+        transition: all 2s ease-in-out;
         @media (max-width: 768px) {
             width: 200px!important;
             height: 200px!important;
@@ -13,24 +16,38 @@
             filter: drop-shadow(2px 4px 6px black);
         }
     }
-</style>
-<script>
 
-    const dotLottie = document.querySelector("dotlottie-player");
+
+</style>
+
+<script>
+    const dotLottie = document.querySelector("dotlottie-player") as HTMLElement;
+    let mousePosition = { x: 0, y: 0 };
+    let mouseTimer;
+
     document.addEventListener("mousemove", (event) => {
-        // Obtener el punto de la pantalla donde se encuentra el mouse
-        const mousePosition = getMousePosition(event);
-        console.log(mousePosition.x);
-        
+        clearTimeout(mouseTimer);
+        mouseTimer = setTimeout(() => {
+         mousePosition = getMousePosition(event);
+        }, 100);
     });
 
     function getMousePosition(event) {
         const rect = event.target.getBoundingClientRect();
         return {
-            x: event.clientX - rect.left,
-            y: event.clientY - rect.top,
+            x: event.clientX - rect.left / 2,
+            y: event.clientY - rect.top / 2,
         };
     }
 
-    
+    function update() {
+        // console.log(mousePosition.x);
+        if (dotLottie) {
+            dotLottie.style.setProperty("left", `${mousePosition.x}px`);
+            dotLottie.style.setProperty("top", `${mousePosition.y}px`);
+        }
+        requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
 </script>
