@@ -38,9 +38,18 @@ const { responsive } = Astro.props;
       @media (max-width: 768px) {
         display: block;
         position: absolute;
-        bottom: 0;
+        bottom: auto;
         z-index: 2;
-        top: auto;
+        top: 40px;
+        left:-35px;
+        transform-origin: center;
+        transform: rotate(90deg);
+
+      }
+      & img {
+        @media (max-width: 768px) {
+          width: 190px;
+        }
       }
     }
   }

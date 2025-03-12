@@ -79,7 +79,7 @@
       }
     }
     & .letter{
-      --translateY:0; 
+      --translateY:0deg; 
       transform-origin: top center;
 
     } 
@@ -97,13 +97,13 @@
   }
   @keyframes dev-letter {
     0% {
-      transform: translateY(0);
+      transform: rotateX(0);
     }
     50% {
-      transform: translateY(var(--translateY));
+      transform: rotateX(var(--translateY));
     }
     100% {
-      transform: translateY(0);
+      transform: rotateX(0);
     }
     
   }
@@ -115,9 +115,9 @@
   function animateLetter() {
     const letter = letters[Math.floor(Math.random() * letters.length)];
     const randomTime = Math.random() * (20000 - 5000) + 5000;
-    const translateY = Math.floor(Math.random() * (95 - 45 + 1)) + 45;
+    const translateY = Math.floor(Math.random() * 10) + 180;
     setTimeout(() => {
-      (letter as HTMLElement).style.setProperty("--translateY", `${translateY}%`);
+      (letter as HTMLElement).style.setProperty("--translateY", `${translateY}deg`);
       letter.classList.add("animated");
       setTimeout(() => {
         letter.classList.remove("animated");
