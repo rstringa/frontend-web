@@ -14,14 +14,19 @@
 </html>
 
 <style is:global>
+	body * {
+		box-sizing: border-box;
+	}
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		background-color: #FC9300;
 		/* scroll-snap-type: y proximity; 
     	scroll-behavior: smooth;  */
 		overflow-x: hidden;
+	
 	}
 	@font-face {
     font-family: 'OpenSans';
@@ -34,8 +39,8 @@
     font-family: 'OpenSans', sans-serif;
   }
   .section {
-		scroll-snap-align: start; /* Alinea el scroll snap al inicio del contenido */
-		
+		overflow-x: clip;		
   }
+  
 </style>
 <script defer src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>

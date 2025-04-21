@@ -1,0 +1,124 @@
+---
+import work from "@data/work.json";
+import Click from "@components/section2/ClickIcon.astro";
+import Click2 from "@components/section2/ClickIcon2.astro";
+---
+
+{
+  work.map((workItem, index) => (
+    <>
+      <a
+        class={`work-item work-item-${index}`}
+        style={`animation-delay:${index * 0.15}s`}
+        href={workItem.url}
+        target="_blank"
+      >
+        <span class="work-name">{workItem.url}</span>
+        <span class="icon">
+          <Click2 />
+          <Click />
+        </span>
+      </a>
+      {/* {index > 0 && (index + 1) % 5 === 0 && (
+        <div class="more"><span>VIEW ALL</span></div>
+      )} */}
+    </>
+  ))
+}
+
+<script>
+  // Add .animated class when the element is in the viewport using intersection observer
+  const workItems = document.querySelectorAll(".work-item");
+
+  workItems.forEach((workItem) => {
+    const workItemRect = workItem.getBoundingClientRect();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          workItem.classList.add("animated");
+        }
+      });
+    });
+
+    observer.observe(workItem);
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const section2 = document.querySelector(".section2");
+    const more = document.querySelector(".more");
+    more?.addEventListener("click", () => {
+      if (section2) {
+        section2.classList.add("showing-more");
+      }
+    });
+  });
+</script>
+
+<style is:inline>
+    .work-item {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 16px;
+    padding: 0 30px;
+    border-radius: 8px;
+    border: 1px solid var(--lines);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #fff;
+    backdrop-filter: blur(5px);
+    /* transition: all 0.25s ease-in-out; */
+    /* transform: scale(1); */
+    transform-origin: center center;
+
+    &:hover {
+      background-color: #ffffff21;
+      /* color: var(--bg-color); */
+      border-color: #ffffffc8;
+      transform: scale(1.05);
+
+      .icon {
+        svg {
+          /* color: var(--bg-color); */
+          opacity: 1;
+          transform: translateY(-34px);
+        }
+      }
+    }
+    .work-name {
+      font-size: 21px;
+      font-weight: 400;
+    }
+    .icon {
+      --size: 34px;
+      width: var(--size);
+      height: var(--size);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 var(--size);
+      svg {
+        width: var(--size);
+        height: var(--size);
+        color: #fff;
+        opacity: 0.5;
+        transition: all 0.5s ease-in-out;
+      }
+    }
+  }
+  .work-item:nth-child(n + 9) {
+    display: none;
+  }
+
+  .work-item {
+    scale: 0;
+    opacity: 0;
+    transition: transform 0.25s, scale 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    &.animated {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+
+</style>

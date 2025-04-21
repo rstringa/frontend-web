@@ -1,13 +1,247 @@
 ---
+import WorkList from "@components/section2/WorkList.astro";
+import wheelOutside from "@assets/section1-wheel-outside.svg";
+import wheelInner from "@assets/section1-wheel-inner.svg";
+import WheelWhite from "@components/section2/WheelWhite.astro";
+import Eye from "@components/section1/Eye.astro";
 ---
-<section class="section section2">
 
+<section class="section section2">
+  <div class="wheel-white">
+    <WheelWhite />
+  </div>
+  <div class="vertical-lines"></div>
+  <div class="grid">
+    <div class="title">
+      <Eye fill="#ff9800" />
+      <h2>WORK</h2>
+      <div class="work-text">
+        <span>Code</span>
+        <span>Creativity</span>
+        <span>Web Design</span>
+        <span>UI/UX Design</span>
+      </div>
+    </div>
+    <div class="list">
+      <WorkList />
+    </div>
+    <div class="more"><span>VIEW ALL</span></div>
+  </div>
 </section>
 
-<style>
-    .section2 {
-       background: #143d60;
-       min-height: 100dvh;
-       
+<style is:inline>
+  .section2 {
+    --lines: #ffffff45;
+    --bg-color: #143d60;
+    background: var(--bg-color);
+    border-top: 1px solid #ffffff9b;
+    height: fit-content;
+    min-height: 100vh;
+    position: relative;
+    overflow: clip;
+    transition: height 0.2s ease-in-out;
+    transition-behavior: allow-discrete;
+    @starting-style {
+      height: 100vh;
     }
+    /* padding: 60px 0; */
+    &::before {
+      /* content: "";
+      position: absolute;
+      z-index: 5;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: #143d6070;
+      backdrop-filter: blur(3px);
+      pointer-events: none; */
+    }
+    .vertical-lines {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: calc(50% + 7px);
+      transform: translateX(-50%);
+      width: 1250px;
+      height: 100%;
+      border-left: 1px solid var(--lines);
+      border-right: 1px solid var(--lines);
+      pointer-events: none;
+    }
+    .grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      width: 1250px;
+      left: 7px;
+      margin: 0 auto;
+      height: 100%;
+      .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 145px;
+        height: 100vh;
+        position: relative;
+        border-right: 1px solid #ffffff45;
+        &::after {
+          content: "";
+          position: absolute;
+          z-index: 1;
+          width: 7px;
+          height: 50px;
+          background: #ffffff45;
+          bottom: 0;
+          right: -8px;
+          animation: up 5s 10s ease-out infinite;
+        }
+
+        h2 {
+          font-size: 200px;
+          font-weight: 900;
+          color: #fff;
+          letter-spacing: -7px;
+          rotate: -90deg;
+          margin: 0;
+          position: relative;
+          z-index: 2;
+          line-height: 0;
+          left: -4px;
+        }
+        .work-text {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-top: 20px;
+          position: absolute;
+          bottom: 0;
+          span {
+            display: block;
+            color: #ff9800;
+            font-size: 15px;
+            margin: 0 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+          }
+        }
+      }
+      .list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 710px;
+        width: 90%;
+        padding: 60px 0 0 0;
+        position: relative;
+        z-index: 15;
+      }
+      .more {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        cursor: pointer;
+        margin: 0 auto 40px auto;
+        position: relative;
+        bottom: 0;
+        z-index: 5;
+        left: 0;
+        grid-column: span 2;
+        &:after {
+          content: "";
+          position: absolute;
+          z-index: 1;
+          inset: 0;
+          top: 50%;
+          background: var(--lines);
+          height: 1px;
+        }
+
+        span {
+          color: #ffffffd1;
+          font-size: 16px;
+          text-align: center;
+          padding: 10px 30px;
+          display: flex;
+          border: 1px solid var(--lines);
+          border-radius: 8px;
+          z-index: 5;
+          background-color: var(--bg-color);
+          &:hover {
+            color: #fff;
+            background-color: #325675;
+          }
+        }
+      }
+    }
+  }
+
+  .section2.showing-more {
+    height: auto;
+    .more {
+      display: none;
+    }
+    .list {
+      padding: 60px 0;
+    }
+    .work-item {
+      display: flex !important;
+    }
+  }
+  .section2 .eye {
+    --width: 70px;
+    position: absolute;
+    top: 80px;
+    left: calc(50% - calc(var(--width) / 2));
+    z-index: 5;
+    border: 1px solid #ffffff45;
+    border-radius: 50%;
+    width: var(--width);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .section2 .wheel-white {
+    position: absolute;
+    bottom: -9%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: -2%;
+    width: fit-content;
+    animation: float-wheel 5s ease-out infinite;
+    opacity: 0.15;
+    @media (max-width: 1024px) {
+      bottom: 0vh;
+      width: 130px;
+    }
+  }
+  @keyframes up {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-100px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 </style>
+
+<script>
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const section2 = document.querySelector(".section2");
+  //   const more = document.querySelector(".more");
+  //   more?.addEventListener("click", () => {
+  //     if (section2) {
+  //       section2.classList.add("showing-more");
+  //     }
+  //   });
+  // });
+</script>
