@@ -71,7 +71,7 @@
   function update() {
     scrollY = body ? body.scrollTop : 0;
     
-    if (dotLottie && scrollY <= (viewportHeight / 1.5) ) {
+    if (dotLottie && scrollY <= (viewportHeight / 1.15) ) {
       dotLottie.style.setProperty("left", `${mousePosition.x}px`);
       dotLottie.style.setProperty("top", `${mousePosition.y}px`);
       dotLottie.style.setProperty("transform", `scale(${scale})`);
