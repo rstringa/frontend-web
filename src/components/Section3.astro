@@ -1,0 +1,268 @@
+---
+import photo from "@assets/face-mask.png";
+---
+
+<section class="section section3" id="contact">
+  <div class="vertical-lines"></div>
+  <div class="grid">
+    <div class="col-left">
+      <p>Code is creation,<br />code is art...</p>
+    </div>
+    <div class="col-right">
+      <div class="title">CONTACT</div>
+      <div class="content">
+        <div class="card">
+          <div class="photo">
+            <img src={photo.src} alt="Roberto Stringa" />
+          </div>
+          <div class="text">
+            <span class="name">Roberto Stringa</span>
+            <span>Buenos Aires, Argentina</span>
+            <span>robertostringa@gmail.com</span>
+          </div>
+        </div>
+        <div class="form">
+          <form id="myForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" />
+            <label for="subject">Message:</label>
+            <textarea id="text-area" name="text-area" />  
+            <input type="submit" value="Send" class="btn-send" />
+            <div class="message"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section3 {
+    --lines: #ffffff45;
+    --bg-color: #143d60;
+    background: var(--bg-color);
+    /* border-top: 1px solid var(--lines); */
+    padding: 40px 0;
+    height: fit-content;
+    min-height: 100vh;
+    position: relative;
+    overflow: clip;
+  }
+  .vertical-lines {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: calc(50% + 7px);
+    transform: translateX(-50%);
+    width: 1250px;
+    height: 100%;
+    border-left: 1px solid var(--lines);
+    border-right: 1px solid var(--lines);
+    pointer-events: none;
+  }
+  .grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 145px 1fr;
+    width: 1250px;
+    left: 7px;
+    margin: 0 auto;
+    height: 100%;
+    & .col-left {
+      position: relative;
+      border-right: 1px solid #ffffff45;
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      gap: 10px;
+    }
+    & .col-right {
+      position: relative;
+      padding: 0 60px;
+    }
+  }
+  .col-left {
+    & p {
+      padding: 0 10px;
+      font-size: 15px;
+      color: #ff9800;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+  }
+  .col-right {
+    & .title {
+      font-size: 50px;
+      color: #ffffff;
+      margin-bottom: 20px;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    & .content {
+      & .card {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        align-items: center;
+        gap: 30px;
+        border: 1px solid #ffffff45;
+        padding: 0 30px;
+        border-radius: 8px;
+        overflow: hidden;
+        & .photo {
+          aspect-ratio: 1 / 1;
+          display: flex;
+          align-items: end;
+          overflow: hidden;
+          opacity: 0.8;
+          img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+            transform: translateY(70%);
+            transition: transform 0.75s 0.25s
+              cubic-bezier(0.075, 0.82, 0.165, 1);
+          }
+        }
+        & .photo.animated {
+          img {
+            transform: translateY(0%);
+          }
+        }
+        & .text {
+          & span {
+            display: block;
+            font-size: 18px;
+            line-height: 1.5;
+            color: #ffffff;
+
+            font-weight: 200;
+            letter-spacing: 0.5;
+            text-transform: none;
+            &.name {
+              font-weight: 600;
+              text-transform: uppercase;
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin-top: 20px;
+    & label {
+      font-size: 21px;
+      font-weight: 200;
+      color:#fff;
+      opacity:0.8;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    & input {
+      padding: 8px;
+      border: none;
+      border-bottom: 1px solid #fff;
+      border-radius: 5px;
+      background-color: #143d60;
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    & #myForm {
+        display:contents;
+    }
+
+    & .btn-send {
+      background-color: #ff9800;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      &:hover {
+        background-color: #ffc107;
+      }
+    }
+    & .message {
+      margin-top: 10px;
+      color: #ff9800;
+      font-size: 16px;
+    }
+  }
+
+</style>
+<script>
+  const photo = document.querySelector(".photo");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        photo?.classList.add("animated");
+      } else {
+        photo?.classList.remove("animated");
+      }
+    });
+  });
+
+  if (photo) {
+    observer.observe(photo);
+  }
+</script>
+
+<!-- RESEND FORM-->
+<script>
+  import { resendTemplate } from "../components/ResendTemplate";
+
+  const message = document.querySelector(".message");
+  const myForm = document.getElementById("myForm") as HTMLFormElement;
+
+  myForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    // Obtener los valores de los campos
+    const name = (document.getElementById("name") as HTMLInputElement).value;
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const text = (document.getElementById("text-area") as HTMLInputElement).value; 
+    if (message) {
+      try {
+        const res = await fetch("/api/resendEmailJson", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "FrontEnd-<onboarding@resend.dev>",  
+            to: "robertostringa@gmail.com",
+            reply_to: `${email}`,
+            subject: `FrontEnd Web`,
+            html: resendTemplate(email, name, text),
+            text: "Formato de texto",
+          }),
+        });
+
+        if (res.ok) {
+          // La solicitud fue exitosa
+          const data = await res.json();
+          message.innerHTML = "¡Solicitud enviada con éxito!";
+        } else {
+          // La solicitud no fue exitosa
+          message.innerHTML =
+            "Error al enviar la solicitud. Por favor, inténtalo de nuevo.";
+        }
+      } catch (error) {
+        // Error en la solicitud
+        message.innerHTML =
+          "Error en la solicitud. Por favor, inténtalo de nuevo.";
+      }
+    }
+  });
+</script>

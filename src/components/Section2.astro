@@ -1,7 +1,5 @@
 ---
 import WorkList from "@components/section2/WorkList.astro";
-import wheelOutside from "@assets/section1-wheel-outside.svg";
-import wheelInner from "@assets/section1-wheel-inner.svg";
 import WheelWhite from "@components/section2/WheelWhite.astro";
 import Eye from "@components/section1/Eye.astro";
 ---
@@ -134,8 +132,8 @@ import Eye from "@components/section1/Eye.astro";
         justify-content: center;
         margin: 0 auto;
         max-width: 710px;
-        width: 90%;
-        padding: 60px 0 0 0;
+        width: calc(90vw - 145px);
+        padding: 80px 0 60px 0;
         position: relative;
         z-index: 15;
       }
@@ -186,7 +184,7 @@ import Eye from "@components/section1/Eye.astro";
       display: none;
     }
     .list {
-      padding: 60px 0;
+      padding: 80px 0;
     }
     .work-item {
       display: flex !important;

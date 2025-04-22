@@ -9,7 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^8.1.3",
     "@studio-freight/lenis": "^1.0.42",
-    "astro": "^5.4.2"
+    "astro": "^5.4.2",
+    "resend": "^4.4.0"
   }
 }
