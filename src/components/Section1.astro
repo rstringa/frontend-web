@@ -10,19 +10,19 @@ import TypeEffect1 from "@components/section1/TypeEffect1.astro";
 import Facemask from "@components/section1/Facemask.astro";
 import Eye from "@components/section1/Eye.astro";
 import Dron from "@components/Dron.astro";
-
 ---
+
 <Dron />
 <section class="section section1">
-   
   <div class="top">
-  
     <Eye fill="#787878" />
     <Frontend />
     <Facemask responsive="mobile" />
   </div>
   <div class="bottom">
-    <div class="vertical-lines"></div>
+    <div class="vertical-lines">
+      <!-- <div class="name">Roberto Stringa</div> -->
+    </div>
     <Dev />
     <TypeEffect1 />
     <div class="box-lines">
@@ -36,7 +36,9 @@ import Dron from "@components/Dron.astro";
       <div class="lines">
         <img class="image-lines" src={linesImage.src} alt="" height="186" />
         <Eye fill="var(--primary-color, #fff)" />
-        <div class="contact-text"><a href="" title="Contact US">Contact me</a></div>
+        <div class="contact-text">
+          <a href="" title="Contact US">Contact me</a>
+        </div>
       </div>
       <Webdesign />
       <Facemask />
@@ -45,12 +47,11 @@ import Dron from "@components/Dron.astro";
 </section>
 
 <style>
-
   .section1 {
     --primary-color: #ff9500;
-    --light-lines:#ffc107;
+    --light-lines: #ffc107;
     overflow: clip;
-   
+
     img {
       max-width: 100%;
     }
@@ -75,12 +76,11 @@ import Dron from "@components/Dron.astro";
       background: rgba(0, 0, 0, 0.9);
     }
     .eye {
-        position: absolute;
-        top: 27px;
-        right: 10%;
-        z-index: 5;
+      position: absolute;
+      top: 27px;
+      right: 10%;
+      z-index: 5;
     }
-    
   }
 
   .bottom {
@@ -97,49 +97,55 @@ import Dron from "@components/Dron.astro";
     @media (max-width: 768px) {
       height: 70dvh;
     }
-           & .vertical-lines {
-            position: absolute;
-            z-index: 2;
-            top: 0;
-            left: calc(50%);
-            transform: translateX(-50%);
-            width: 1250px;
-            height: 100%;
+    & .vertical-lines {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: calc(50%);
+      transform: translateX(-50%);
+      width: 1250px;
+      height: 100%;
+      border-left: 1px solid var(--light-lines);
+      border-right: 1px solid var(--light-lines);
+      pointer-events: none;
 
-            border-left: 1px solid var(--light-lines);
-            border-right: 1px solid var(--light-lines);
-            pointer-events: none;
-        }
- 
+      /* & .name {
+        position: relative;
+        top:50%;
+        text-transform: uppercase;
+        font-weight: 200;
+        font-size: 21px;
+      } */
+    }
   }
   .contact-text {
     position: absolute;
     bottom: 0;
     left: calc(50% - 50px);
-    animation: glitch-text 5s cubic-bezier(0.175, 0.885, 0.32, 1.275)  infinite alternate;
+    animation: glitch-text 5s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite
+      alternate;
     &:hover {
-        animation-play-state: paused;
-        animation-fill-mode: forwards;
+      animation-play-state: paused;
+      animation-fill-mode: forwards;
     }
     @media (max-width: 768px) {
       left: calc(50% - 25px);
     }
     a {
-        color:#111;
-        text-decoration: none;
-        text-transform: capitalize;
-        position: relative;
-        display: inline-flex;
-        font-weight: 900;
-        border:1px solid #111;
-        border-radius: 8px;
-        padding: 5px 15px; 
-        &:hover {
-            
-            border-color: #fff;
-            color: #000;
+      color: #111;
+      text-decoration: none;
+      text-transform: capitalize;
+      position: relative;
+      display: inline-flex;
+      font-weight: 900;
+      border: 1px solid #111;
+      border-radius: 8px;
+      padding: 5px 15px;
+      &:hover {
+        border-color: #fff;
+        color: #000;
+      }
     }
-}
   }
   .box-lines {
     margin-top: 5dvh;
@@ -213,35 +219,34 @@ import Dron from "@components/Dron.astro";
       padding: 0 5px;
     }
   }
- 
-@keyframes glitch-text {
+
+  @keyframes glitch-text {
     0% {
-        transform: translate(0, 0);
-        filter:blur(0px);
+      transform: translate(0, 0);
+      filter: blur(0px);
     }
     25% {
-        transform: translate(5px, -5px);
-        filter:blur(0px);
+      transform: translate(5px, -5px);
+      filter: blur(0px);
     }
     50% {
-        transform: translate(0, -10px);
-        filter:blur(20px);
+      transform: translate(0, -10px);
+      filter: blur(20px);
     }
     75% {
-        transform: translate(-5px, -2px);
-        filter:blur(0px);
+      transform: translate(-5px, -2px);
+      filter: blur(0px);
     }
     100% {
-        transform: translate(0, 0);
-        filter:blur(0px);
+      transform: translate(0, 0);
+      filter: blur(0px);
     }
-}
+  }
 
   @keyframes rotate {
     from {
       transform: rotate(0deg);
       filter: drop-shadow(5px 5px 10px #111);
-     
     }
     to {
       transform: rotate(360deg);
@@ -252,17 +257,12 @@ import Dron from "@components/Dron.astro";
   @keyframes float-wheel {
     0% {
       transform: translateY(0);
-    
     }
     50% {
       transform: translateY(-10px);
-    
     }
     100% {
       transform: translateY(0);
-     
     }
   }
 </style>
-
-

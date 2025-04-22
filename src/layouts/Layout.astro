@@ -1,46 +1,80 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="preload" href="/fonts/OpenSans-variable.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-		<meta name="generator" content={Astro.generator} />
-		<title>FrontEnd Web</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      href="/fonts/OpenSans-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/lenis@1.3.1/dist/lenis.css"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>FrontEnd Web</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
 <style is:global>
-	body * {
-		box-sizing: border-box;
-	}
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		background-color: #FC9300;
-		/* scroll-snap-type: y proximity; 
+  body * {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fc9300;
+    /* scroll-snap-type: y proximity; 
     	scroll-behavior: smooth;  */
-		overflow-x: hidden;
-	
-	}
-	@font-face {
-    font-family: 'OpenSans';
-    src: url('/fonts/OpenSans-variable.woff2') format('woff2');
+    overflow-x: hidden;
+  }
+  @font-face {
+    font-family: "OpenSans";
+    src: url("/fonts/OpenSans-variable.woff2") format("woff2");
     font-weight: 100 900; /* Rango de pesos variables */
     font-display: swap;
   }
-  
+
   body {
-    font-family: 'OpenSans', sans-serif;
+    font-family: "OpenSans", sans-serif;
   }
   .section {
-		overflow-x: clip;		
+    overflow-x: clip;
   }
-  
 </style>
-<script defer src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+<script
+  defer
+  src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+  type="module"></script>
+<script src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"></script>
+
+<script type="module">
+  // Initialize Lenis
+  const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+      direction: "vertical",
+      gestureDirection: "vertical",
+      smooth: true,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+</script>
