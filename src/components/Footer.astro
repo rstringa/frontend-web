@@ -1,6 +1,9 @@
+---
+const language = Astro.props.language;
+---
 <footer>
     <div class="container">
-    <p>© 2025 by Roberto Stringa</p>
+    <p>© 2025 { language === "es" ? "por" : "by" } Roberto Stringa</p>
     </div>
 </footer>
 

@@ -3,6 +3,7 @@ import WorkList from "@components/section2/WorkList.astro";
 import WheelWhite from "@components/section2/WheelWhite.astro";
 import ArrowDown from "@components/section2/ArrowDown.astro";
 import Eye from "@components/section1/Eye.astro";
+const language = Astro.props.language;
 ---
 
 <section class="section section2">
@@ -13,12 +14,24 @@ import Eye from "@components/section1/Eye.astro";
   <div class="grid">
     <div class="title">
       <Eye fill="#ff9800" />
-      <h2>WORK</h2>
+      <h2>{ language === "es" ? "WORK" : "WORK" }</h2>
       <div class="work-text">
-        <span>Code</span>
-        <span>Creativity</span>
-        <span>Web Design</span>
-        <span>UI/UX Design</span>
+        {language === "es" ? (
+          <>
+            <span>Código</span>
+            <span>Creatividad</span>
+            <span>Diseño Web</span>
+            <span>Diseño UI/UX</span>
+          </>
+        ) : (
+          <>
+            <span>Code</span>
+            <span>Creativity</span>
+            <span>Web Design</span>
+            <span>UI/UX Design</span>
+          </>
+        )}
+
       </div>
     </div>
     <div class="list">
@@ -28,7 +41,9 @@ import Eye from "@components/section1/Eye.astro";
   </div>
 </section>
 <div class="more-container">
-<div class="more"><span>VIEW MORE PROJECTS<ArrowDown /></span></div>
+<div class="more"><span>
+{ language === "es" ? "VER MÁS PROYECTOS" : "VIEW MORE PROJECTS" }<ArrowDown />
+</span></div>
 </div>
 <style is:inline>
   :root {

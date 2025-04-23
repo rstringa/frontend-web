@@ -10,11 +10,17 @@ import TypeEffect1 from "@components/section1/TypeEffect1.astro";
 import Facemask from "@components/section1/Facemask.astro";
 import Eye from "@components/section1/Eye.astro";
 import Dron from "@components/Dron.astro";
+// Get language from component in Index.astro
+const language = Astro.props.language;
 ---
 
 <Dron />
 <section class="section section1">
   <div class="top">
+    <div class="switcher">
+      <a href="/" class={!language ? "active" : ""}>EN</a> 
+      <a href="/es" class={language === "es" ? "active" : ""}>ES</a>
+    </div>
     <Eye fill="#787878" />
     <Frontend />
     <Facemask responsive="mobile" />
@@ -24,10 +30,10 @@ import Dron from "@components/Dron.astro";
       <!-- <div class="name">Roberto Stringa</div> -->
     </div>
     <Dev />
-    <TypeEffect1 />
+    <TypeEffect1 language={language} />
     <div class="box-lines">
       <div class="box-type_effect">
-        <span>Hi, </span><TypeEffect />
+        <span>{ language === "es" ? "Hola, " : "Hi, " }</span><TypeEffect language={language} />
       </div>
       <div class="wheel">
         <img class="wheel-outside" src={wheelOutside.src} alt="" />
@@ -37,7 +43,7 @@ import Dron from "@components/Dron.astro";
         <img class="image-lines" src={linesImage.src} alt="" height="186" />
         <Eye fill="var(--primary-color, #fff)" />
         <div class="contact-text">
-          <a href="#contact" title="Contact US">Contact me</a>
+          <a href="#contact" title="Contact US">{ language === "es" ? "Contáctame" : "Contact me" }</a>
         </div>
       </div>
       <Webdesign />
@@ -82,7 +88,40 @@ import Dron from "@components/Dron.astro";
       z-index: 5;
     }
   }
-
+  .switcher {
+    position: absolute;
+        top: 32px;
+        right: calc(10% + 80px);
+        z-index: 5;
+    display: flex;
+    gap: 5px;
+    @media (max-width: 767px) {
+      right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    }
+    a {
+      font-size: 12px;
+      color: #fff;
+      text-decoration: none;
+      text-transform: capitalize;
+      position: relative;
+      display: inline-flex;
+      font-weight: 400;
+      border: 1px solid #111;
+      border-radius: 30px;
+      padding: 4px 15px;
+      &:hover {
+        border-color: #ffffffaf;
+        color: #ffffffaf;
+        
+      }
+      &.active {
+        border-color: #ff9800;
+        color: #ff9800;
+      }
+    }
+  }
   .bottom {
     background: #ff9500;
     width: 100vw;

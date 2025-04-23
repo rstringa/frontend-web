@@ -1,3 +1,8 @@
+---
+const url = new URL(Astro.request.url);
+const isES = url.pathname.includes("/es");
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -24,8 +29,8 @@
     <meta name="generator" content={Astro.generator} />
     <title>Roberto Stringa - Designer / FrontEnd DEV</title>
   </head>
-  <body>
-    <slot />
+  <body class={isES ? "es" : "en"}>
+    <slot/>
   </body>
 </html>
 

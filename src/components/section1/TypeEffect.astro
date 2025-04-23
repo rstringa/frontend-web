@@ -1,9 +1,13 @@
 ---
-
+const language = Astro.props.language;
 ---
 
-<p class="typewrite" data-period="2000" data-type='[ "I´m Coder.", "I´m Creative.", "I Love Design.", "I Love to Develop." ]'>   
-    Hi, <span class="wrap"></span> 
+<p class="typewrite" 
+    data-period="2000" 
+    data-type={language === "es" 
+        ? '["Soy desarrollador.", "Soy creativo.", "Soy diseñador.", "Amo el desarrollo."]'   
+        : '["I´m a coder.", "I´m a creative.", "I Love Design.", "I Love to Develop."]'}> 
+    Hi, <span class="wrap"></span>
 </p>
 
 <script>

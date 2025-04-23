@@ -2,23 +2,47 @@
 import photo from "@assets/face-mask.png";
 import Github from "@components/section3/Github.astro";
 import LinkedIn from "@components/section3/Linkedin.astro";
+const language = Astro.props.language;
 ---
 
 <section class="section section3" id="contact">
   <div class="vertical-lines"></div>
   <div class="grid">
     <div class="col-left">
-      <p>Code is creation,<br />code is art...</p>
+      <p>
+        {
+          language === "es" ? (
+            <>
+              El código es creación,
+              <br />
+              el código es arte...
+            </>
+          ) : (
+            <>
+              Code is creation,
+              <br />
+              Code is art...
+            </>
+          )
+        }
+      </p>
     </div>
     <div class="col-right">
-      <div class="title">CONTACT</div>
+      <div class="title">{language === "es" ? "CONTACTO" : "CONTACT"}</div>
       <div class="content">
         <div class="card">
           <div class="photo">
             <img src={photo.src} alt="Roberto Stringa" />
           </div>
           <div class="text">
-            <span class="name">Roberto Stringa<i>Designer/FrontEnd Dev</i></span
+            <span class="name"
+              >Roberto Stringa<i
+                >{
+                  language === "es"
+                    ? "Diseñador/Desarrollador FrontEnd"
+                    : "Designer/FrontEnd Dev"
+                }</i
+              ></span
             >
             <span class="place">Buenos Aires, Argentina</span>
             <span class="email">robertostringa@gmail.com</span>
@@ -41,15 +65,21 @@ import LinkedIn from "@components/section3/Linkedin.astro";
           </div>
         </div>
         <div class="form">
-          <h4>Work with me</h4>
+          <h4>{language === "es" ? "Trabaja conmigo" : "Work with me"}</h4>
           <form id="myForm">
-            <label for="name">Name:</label>
+            <label for="name">{language === "es" ? "Nombre:" : "Name:"}</label>
             <input type="text" id="name" name="name" required />
-            <label for="email">Email:</label>
+            <label for="email">{language === "es" ? "Email:" : "Email:"}</label>
             <input type="email" id="email" name="email" required />
-            <label for="subject">Message:</label>
+            <label for="subject"
+              >{language === "es" ? "Mensaje:" : "Message:"}</label
+            >
             <textarea id="text_area" name="text_area" required></textarea>
-            <input type="submit" value="Ok, I send" class="btn-send" />
+            <input
+              type="submit"
+              value={language === "es" ? "Ok, enviar" : "Ok, I send"}
+              class="btn-send"
+            />
             <div class="message"></div>
           </form>
         </div>
@@ -120,16 +150,16 @@ import LinkedIn from "@components/section3/Linkedin.astro";
       margin-bottom: 0;
     }
     &::after {
-          content: "";
-          position: absolute;
-          z-index: 1;
-          width: 7px;
-          height: 50px;
-          background: #ffffff45;
-          bottom: 0;
-          right: -8px;
-          animation: up 5s 10s ease-out infinite;
-        }
+      content: "";
+      position: absolute;
+      z-index: 1;
+      width: 7px;
+      height: 50px;
+      background: #ffffff45;
+      bottom: 0;
+      right: -8px;
+      animation: up 5s 10s ease-out infinite;
+    }
   }
   .col-right {
     & .title {
@@ -338,7 +368,6 @@ import LinkedIn from "@components/section3/Linkedin.astro";
       transition: background-color 0.3s ease;
       @media (max-width: 767px) {
         font-size: 21px;
-
       }
       &:hover {
         background-color: #ffc107;
@@ -348,6 +377,17 @@ import LinkedIn from "@components/section3/Linkedin.astro";
       margin-top: 10px;
       color: #ff9800;
       font-size: 16px;
+    }
+  }
+
+  /* SPANISH */
+  body.es {
+    .col-right {
+      .card {
+        i {
+          text-transform: capitalize!important;
+        }
+      }
     }
   }
 </style>
@@ -403,7 +443,8 @@ import LinkedIn from "@components/section3/Linkedin.astro";
         if (res.ok) {
           // La solicitud fue exitosa
           const data = await res.json();
-          message.innerHTML = "¡Great, thanks for your message! I’ll be in touch shortly.";
+          message.innerHTML =
+            "¡Great, thanks for your message! I’ll be in touch shortly.";
         } else {
           // La solicitud no fue exitosa
           message.innerHTML =

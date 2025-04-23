@@ -1,5 +1,11 @@
+---
+const language = Astro.props.language;
+
+---
+
 <div class="typewriter">
-    <h1>Code + Creation + Inspiration</h1>
+   
+    <h1>{ language === "es" ? "Código + Creación + Inspiración" : "Code + Creation + Inspiration" }</h1> 
 </div>
 
 <style>
