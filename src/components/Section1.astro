@@ -18,7 +18,7 @@ const language = Astro.props.language;
 <section class="section section1">
   <div class="top">
     <div class="switcher">
-      <a href="/" class={!language ? "active" : ""}>EN</a>
+      <a href="/" class={language==="en" ? "active" : ""}>EN</a>
       <a href="/es" class={language === "es" ? "active" : ""}>ES</a>
     </div>
     <Eye fill="#787878" />
