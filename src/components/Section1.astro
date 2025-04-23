@@ -18,7 +18,7 @@ const language = Astro.props.language;
 <section class="section section1">
   <div class="top">
     <div class="switcher">
-      <a href="/" class={!language ? "active" : ""}>EN</a> 
+      <a href="/" class={!language ? "active" : ""}>EN</a>
       <a href="/es" class={language === "es" ? "active" : ""}>ES</a>
     </div>
     <Eye fill="#787878" />
@@ -33,7 +33,9 @@ const language = Astro.props.language;
     <TypeEffect1 language={language} />
     <div class="box-lines">
       <div class="box-type_effect">
-        <span>{ language === "es" ? "Hola, " : "Hi, " }</span><TypeEffect language={language} />
+        <span>{language === "es" ? "Hola, " : "Hi, "}</span><TypeEffect
+          language={language}
+        />
       </div>
       <div class="wheel">
         <img class="wheel-outside" src={wheelOutside.src} alt="" />
@@ -43,7 +45,9 @@ const language = Astro.props.language;
         <img class="image-lines" src={linesImage.src} alt="" height="186" />
         <Eye fill="var(--primary-color, #fff)" />
         <div class="contact-text">
-          <a href="#contact" title="Contact US">{ language === "es" ? "Contáctame" : "Contact me" }</a>
+          <a href="#contact" title="Contact US"
+            >{language === "es" ? "Contáctame" : "Contact me"}</a
+          >
         </div>
       </div>
       <Webdesign />
@@ -90,15 +94,15 @@ const language = Astro.props.language;
   }
   .switcher {
     position: absolute;
-        top: 32px;
-        right: calc(10% + 80px);
-        z-index: 5;
+    top: 32px;
+    right: calc(10% + 80px);
+    z-index: 5;
     display: flex;
     gap: 5px;
     @media (max-width: 767px) {
       right: auto;
-    left: 50%;
-    transform: translateX(-50%);
+      left: 50%;
+      transform: translateX(-50%);
     }
     a {
       font-size: 12px;
@@ -111,10 +115,12 @@ const language = Astro.props.language;
       border: 1px solid #111;
       border-radius: 30px;
       padding: 4px 15px;
+      @media (max-width: 767px) {
+        font-size: 14px;
+      }
       &:hover {
         border-color: #ffffffaf;
         color: #ffffffaf;
-        
       }
       &.active {
         border-color: #ff9800;
