@@ -43,15 +43,7 @@ import Click2 from "@components/section2/ClickIcon2.astro";
     observer.observe(workItem);
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const section2 = document.querySelector(".section2");
-    const more = document.querySelector(".more");
-    more?.addEventListener("click", () => {
-      if (section2) {
-        section2.classList.add("showing-more");
-      }
-    });
-  });
+
 </script>
 
 <style>

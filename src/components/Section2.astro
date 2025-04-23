@@ -24,14 +24,19 @@ import Eye from "@components/section1/Eye.astro";
     <div class="list">
       <WorkList />
     </div>
-    <div class="more"><span>VIEW MORE PROJECTS<ArrowDown /></span></div>
+    <!-- <div class="more"><span>VIEW MORE PROJECTS<ArrowDown /></span></div> -->
   </div>
 </section>
-
+<div class="more-container">
+<div class="more"><span>VIEW MORE PROJECTS<ArrowDown /></span></div>
+</div>
 <style is:inline>
-  .section2 {
+  :root {
     --lines: #ffffff45;
     --bg-color: #143d60;
+  }
+  .section2 {
+    
     background: var(--bg-color);
     border-top: 1px solid #ffffff9b;
     height: fit-content;
@@ -116,7 +121,7 @@ import Eye from "@components/section1/Eye.astro";
           width: 100%;
           margin-top: 20px;
           position: absolute;
-          bottom: 0;
+          bottom: 10px;
           @media (max-width: 767px) {
             top:0;
             bottom:auto;
@@ -140,7 +145,7 @@ import Eye from "@components/section1/Eye.astro";
         margin: 0 auto;
         max-width: 710px;
         width: calc(90vw - 145px);
-        padding: 80px 0 60px 0;
+        padding: 80px 0 80px 0;
         position: relative;
         z-index: 15;
         @media (max-width: 767px) {
@@ -150,22 +155,33 @@ import Eye from "@components/section1/Eye.astro";
           padding-top: 120px;
         }
       }
-      .more {
+    
+    }
+  }
+  .more-container {
+    background: #143D60;
+    margin-top: 0px;
+    position: relative;
+    z-index: 20;
+    height: 0;
+  .more {
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 0;
         width: 100%;
+        max-width: 1250px;
         cursor: pointer;
         margin: 0 auto 0 auto;
         position: relative;
         bottom: 0;
         z-index: 5;
-        left: 0;
+        left: 7px;
         grid-column: span 2;
         @media (max-width: 767px) {
           width: 100vw;
           margin: 0;
-          left: -7px;
+          left: 0px;
         }
         &:after {
           content: "";
@@ -204,8 +220,14 @@ import Eye from "@components/section1/Eye.astro";
           }
         }
       }
-    }
-  }  
+      .more.showing-all {
+        pointer-events: none;
+        opacity: 0.25;
+        & svg {
+          animation: none;
+        }
+      }
+    }    
   @keyframes down {
   0%, 100% { transform: translateY(0); }
   10% { transform: translateY(3px); } 
@@ -274,13 +296,14 @@ import Eye from "@components/section1/Eye.astro";
 </style>
 
 <script>
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   const section2 = document.querySelector(".section2");
-  //   const more = document.querySelector(".more");
-  //   more?.addEventListener("click", () => {
-  //     if (section2) {
-  //       section2.classList.add("showing-more");
-  //     }
-  //   });
-  // });
+  document.addEventListener("DOMContentLoaded", () => {
+    const section2 = document.querySelector(".section2");
+    const more = document.querySelector(".more");
+    more?.addEventListener("click", () => {
+      if (section2) {
+        section2.classList.add("showing-more");
+        more.classList.add("showing-all");
+      }
+    });
+  });
 </script>
