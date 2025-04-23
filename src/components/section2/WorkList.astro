@@ -71,7 +71,9 @@ import Click2 from "@components/section2/ClickIcon2.astro";
     /* transition: all 0.25s ease-in-out; */
     /* transform: scale(1); */
     transform-origin: center center;
-
+      @media (max-width:767px){
+            background-color: #143c60d5;
+          } 
     &:hover {
       background-color: #ffffff21;
       /* color: var(--bg-color); */
@@ -83,12 +85,18 @@ import Click2 from "@components/section2/ClickIcon2.astro";
           color:#cf7a02;
           opacity: 1;
           transform: translateY(-34px);
+
         }
       }
     }
     .work-name {
       font-size: 21px;
       font-weight: 400;
+      display: block;
+      width: calc(100% - 40px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .icon {
       --size: 34px;
@@ -98,6 +106,9 @@ import Click2 from "@components/section2/ClickIcon2.astro";
       display: flex;
       flex-direction: column;
       flex: 0 0 var(--size);
+      @media (max-width:767px){
+        --size: 28px;
+          }
       svg {
         width: var(--size);
         height: var(--size);

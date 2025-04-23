@@ -72,6 +72,7 @@ import Eye from "@components/section1/Eye.astro";
       display: grid;
       grid-template-columns: auto 1fr;
       width: 1250px;
+      max-width: 100%;
       left: 7px;
       margin: 0 auto;
       height: 100%;
@@ -136,6 +137,10 @@ import Eye from "@components/section1/Eye.astro";
         padding: 80px 0 60px 0;
         position: relative;
         z-index: 15;
+        @media (max-width:767px){
+          width: calc(100vw - 60px); 
+          transform: translateX(-120px);
+        } 
       }
       .more {
         display: flex;
