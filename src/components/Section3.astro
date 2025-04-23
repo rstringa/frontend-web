@@ -119,6 +119,17 @@ import LinkedIn from "@components/section3/Linkedin.astro";
       font-weight: 600;
       margin-bottom: 0;
     }
+    &::after {
+          content: "";
+          position: absolute;
+          z-index: 1;
+          width: 7px;
+          height: 50px;
+          background: #ffffff45;
+          bottom: 0;
+          right: -8px;
+          animation: up 5s 10s ease-out infinite;
+        }
   }
   .col-right {
     & .title {

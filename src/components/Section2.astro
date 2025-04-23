@@ -1,6 +1,7 @@
 ---
 import WorkList from "@components/section2/WorkList.astro";
 import WheelWhite from "@components/section2/WheelWhite.astro";
+import ArrowDown from "@components/section2/ArrowDown.astro";
 import Eye from "@components/section1/Eye.astro";
 ---
 
@@ -23,7 +24,7 @@ import Eye from "@components/section1/Eye.astro";
     <div class="list">
       <WorkList />
     </div>
-    <div class="more"><span>VIEW ALL</span></div>
+    <div class="more"><span>VIEW MORE PROJECTS<ArrowDown /></span></div>
   </div>
 </section>
 
@@ -186,9 +187,16 @@ import Eye from "@components/section1/Eye.astro";
           border-radius: 8px;
           z-index: 5;
           background-color: var(--bg-color);
+          & svg {
+            margin-left: 10px;
+           
+          }
           &:hover {
             color: #fff;
             background-color: #325675;
+            & svg {
+              animation: down 2.5s ease-in infinite forwards;  
+            } 
           }
           @media (max-width: 767px) {
             background-color: #ff9800;
@@ -197,8 +205,16 @@ import Eye from "@components/section1/Eye.astro";
         }
       }
     }
-  }
-
+  }  
+  @keyframes down {
+  0%, 100% { transform: translateY(0); }
+  10% { transform: translateY(3px); } 
+  20% { transform: translateY(0); }
+  30% { transform: translateY(3px); } 
+  40% { transform: translateY(0); }
+  /* El resto es para esperar */
+  100% { transform: translateY(0); }
+}
   .section2.showing-more {
     height: auto;
     .more {
