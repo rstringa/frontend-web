@@ -403,16 +403,16 @@ import LinkedIn from "@components/section3/Linkedin.astro";
         if (res.ok) {
           // La solicitud fue exitosa
           const data = await res.json();
-          message.innerHTML = "¡Solicitud enviada con éxito!";
+          message.innerHTML = "¡Great, thanks for your message! I’ll be in touch shortly.";
         } else {
           // La solicitud no fue exitosa
           message.innerHTML =
-            "Error al enviar la solicitud. Por favor, inténtalo de nuevo.";
+            "There was an error sending the request. Please try again.";
         }
       } catch (error) {
         // Error en la solicitud
         message.innerHTML =
-          "Error en la solicitud. Por favor, inténtalo de nuevo.";
+          "There was an error sending the request. Please try again.";
       }
     }
   });
