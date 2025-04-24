@@ -14,24 +14,25 @@ const language = Astro.props.language;
   <div class="grid">
     <div class="title">
       <Eye fill="#ff9800" />
-      <h2>{ language === "es" ? "WORK" : "WORK" }</h2>
+      <h2>{language === "es" ? "WORK" : "WORK"}</h2>
       <div class="work-text">
-        {language === "es" ? (
-          <>
-            <span>Código</span>
-            <span>Creatividad</span>
-            <span>Diseño Web</span>
-            <span>Diseño UI/UX</span>
-          </>
-        ) : (
-          <>
-            <span>Code</span>
-            <span>Creativity</span>
-            <span>Web Design</span>
-            <span>UI/UX Design</span>
-          </>
-        )}
-
+        {
+          language === "es" ? (
+            <>
+              <span>Código</span>
+              <span>Creatividad</span>
+              <span>Diseño Web</span>
+              <span>Diseño UI/UX</span>
+            </>
+          ) : (
+            <>
+              <span>Code</span>
+              <span>Creativity</span>
+              <span>Web Design</span>
+              <span>UI/UX Design</span>
+            </>
+          )
+        }
       </div>
     </div>
     <div class="list">
@@ -39,11 +40,15 @@ const language = Astro.props.language;
     </div>
     <!-- <div class="more"><span>VIEW MORE PROJECTS<ArrowDown /></span></div> -->
   </div>
+
 </section>
 <div class="more-container">
-<div class="more"><span>
-{ language === "es" ? "VER MÁS PROYECTOS" : "VIEW MORE PROJECTS" }<ArrowDown />
-</span></div>
+  <div class="more">
+    <span>
+      {language === "es" ? "VER MÁS PROYECTOS" : "VIEW MORE PROJECTS"}<ArrowDown
+      />
+    </span>
+  </div>
 </div>
 <style is:inline>
   :root {
@@ -51,7 +56,6 @@ const language = Astro.props.language;
     --bg-color: #143d60;
   }
   .section2 {
-    
     background: var(--bg-color);
     border-top: 1px solid #ffffff9b;
     height: fit-content;
@@ -138,8 +142,8 @@ const language = Astro.props.language;
           position: absolute;
           bottom: 10px;
           @media (max-width: 767px) {
-            top:0;
-            bottom:auto;
+            top: 0;
+            bottom: auto;
             left: 20px;
           }
           span {
@@ -170,94 +174,105 @@ const language = Astro.props.language;
           padding-top: 120px;
         }
       }
-    
     }
   }
   .more-container {
-    background: #143D60;
+    background: #143d60;
     margin-top: 0px;
     position: relative;
     z-index: 20;
     height: 0;
-  .more {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 0;
-        width: 100%;
-        max-width: 1250px;
-        cursor: pointer;
-        margin: 0 auto 0 auto;
-        position: relative;
-        bottom: 0;
-        z-index: 5;
-        left: 7px;
-        grid-column: span 2;
-        @media (max-width: 767px) {
-          width: 100vw;
-          margin: 0;
-          left: 0px;
-        }
-        &:after {
-          content: "";
-          position: absolute;
-          z-index: 1;
-          inset: 0;
-          top: 50%;
-          background: var(--lines);
-          height: 1px;
-        }
+    .more {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 0;
+      width: 100%;
+      max-width: 1250px;
+      cursor: pointer;
+      margin: 0 auto 0 auto;
+      position: relative;
+      bottom: 0;
+      z-index: 5;
+      left: 7px;
+      grid-column: span 2;
+      @media (max-width: 767px) {
+        width: 100vw;
+        margin: 0;
+        left: 0px;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        top: 50%;
+        background: var(--lines);
+        height: 1px;
+      }
 
-        span {
-          color: #ffffffd1;
-          font-size: 16px;
-          text-align: center;
-          padding: 10px 30px;
-          display: flex;
-          border: 1px solid var(--lines);
-          border-radius: 8px;
-          z-index: 5;
-          background-color: var(--bg-color);
-          & svg {
-            margin-left: 10px;
-           
-          }
-          &:hover {
-            color: #fff;
-            background-color: #325675;
-            & svg {
-              animation: down 2.5s ease-in infinite forwards;  
-            } 
-          }
-          @media (max-width: 767px) {
-            background-color: #ff9800;
-            color: #111;
-          }
-        }
-      }
-      .more.showing-all {
-        pointer-events: none;
-        opacity: 0.25;
-        & span {
-          @media (max-width: 767px) {
-          background-color: var(--bg-color);
-          color: #ffffffd1;
-          }
-        }
+      span {
+        color: #ffffffd1;
+        font-size: 16px;
+        text-align: center;
+        padding: 10px 30px;
+        display: flex;
+        border: 1px solid var(--lines);
+        border-radius: 8px;
+        z-index: 5;
+        background-color: var(--bg-color);
         & svg {
-          animation: none;
+          margin-left: 10px;
+        }
+        &:hover {
+          color: #fff;
+          background-color: #325675;
+          & svg {
+            animation: down 2.5s ease-in infinite forwards;
+          }
+        }
+        @media (max-width: 767px) {
+          background-color: #ff9800;
+          color: #111;
         }
       }
-    }    
+    }
+    .more.showing-all {
+      pointer-events: none;
+      opacity: 0.25;
+      & span {
+        @media (max-width: 767px) {
+          background-color: var(--bg-color);
+          color: #ffffffd1;
+        }
+      }
+      & svg {
+        animation: none;
+      }
+    }
+  }
   @keyframes down {
-  0%, 100% { transform: translateY(0); }
-  10% { transform: translateY(3px); } 
-  20% { transform: translateY(0); }
-  30% { transform: translateY(3px); } 
-  40% { transform: translateY(0); }
-  /* El resto es para esperar */
-  100% { transform: translateY(0); }
-}
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    10% {
+      transform: translateY(3px);
+    }
+    20% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(3px);
+    }
+    40% {
+      transform: translateY(0);
+    }
+    /* El resto es para esperar */
+    100% {
+      transform: translateY(0);
+    }
+  }
   .section2.showing-more {
     height: auto;
     .more {
@@ -303,6 +318,7 @@ const language = Astro.props.language;
       width: 130px;
     }
   }
+
   @keyframes up {
     0% {
       transform: translateY(0);
@@ -314,7 +330,6 @@ const language = Astro.props.language;
       transform: translateY(0);
     }
   }
-  
 </style>
 
 <script>

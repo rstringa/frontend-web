@@ -86,6 +86,7 @@ const language = Astro.props.language;
       </div>
     </div>
   </div>
+  <!-- <div class="side-texture"></div> -->
 </section>
 
 <style>
@@ -183,6 +184,19 @@ const language = Astro.props.language;
         position: relative;
         z-index: 5;
         background: #143d60;
+        &:hover {
+          --band-base: #143c6000;
+          --band1: color-mix(in srgb, var(--band-base), #ffffff 2%);
+          background: repeating-linear-gradient(
+            45deg,
+            var(--band-base),
+            var(--band-base) 5%,
+            var(--band1) 5%,
+            var(--band1) 10%
+          );
+          background-size: 200px 200px;
+          animation: move-it 3s 0.5s linear infinite;
+        }
         @media (max-width: 767px) {
           grid-template-columns: 1fr;
         }
@@ -386,10 +400,30 @@ const language = Astro.props.language;
     .col-right {
       .card {
         i {
-          text-transform: capitalize!important;
+          text-transform: capitalize !important;
         }
       }
     }
+  }
+  .side-texture {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: calc((100dvw - 1250px) / 2);
+    /* width: calc((100dvw - 1250px - (var(--scroll-width) + 12px)) / 2);  */
+    width: 145px;
+    height: 100%;
+    --band-base: #143c6000;
+    --band1: color-mix(in srgb, var(--band-base), #ffffff 2%);
+    background: repeating-linear-gradient(
+      45deg,
+      var(--band-base),
+      var(--band-base) 5%,
+      var(--band1) 5%,
+      var(--band1) 10%
+    );
+    background-size: 200px 200px;
+    animation: move-it 1s linear infinite;
   }
 </style>
 <script>
@@ -399,7 +433,7 @@ const language = Astro.props.language;
       if (entry.isIntersecting) {
         setTimeout(() => {
           photo?.classList.add("animated");
-        }, 1000)     
+        }, 1000);
       } else {
         photo?.classList.remove("animated");
       }
