@@ -238,6 +238,12 @@ const language = Astro.props.language;
       .more.showing-all {
         pointer-events: none;
         opacity: 0.25;
+        & span {
+          @media (max-width: 767px) {
+          background-color: var(--bg-color);
+          color: #ffffffd1;
+          }
+        }
         & svg {
           animation: none;
         }
