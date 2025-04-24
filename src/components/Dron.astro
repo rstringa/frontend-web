@@ -49,9 +49,9 @@
       mousePosition = getMousePosition(event);
     }, 50);
   });
-  ["click", "touchmove"].forEach((eventType) => {
-    dotLottie.addEventListener(eventType, (event) => {
-      mousePosition.y += 700;
+  dotLottie.addEventListener("click", (event) => {
+     // console.log(event);
+     // mousePosition.y += 700;
       if (dronScale) {
         scale = scale * 2.5;
         dronScale = false;
@@ -61,7 +61,7 @@
       }
       update();
     });
-  });
+
   function getMousePosition(event) {
     const rect = event.target.getBoundingClientRect();
     return {
