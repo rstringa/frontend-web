@@ -25,7 +25,7 @@
     @media (max-width: 768px) {
       width: 200px !important;
       height: 200px !important;
-      top: 30vh;
+      top: 200px;
       filter: drop-shadow(2px 4px 6px black);
     }
   }
@@ -33,13 +33,15 @@
 
 <script>
   const dotLottie = document.querySelector("dotlottie-player") as HTMLElement;
-  let mousePosition = { x: 0, y: 0 };
+ 
+  
   let mouseTimer;
   let scale = 1;
   let dronScale = true;
   let scrollY = 0;
   const body = document.querySelector("body");
   let viewportHeight = window.innerHeight;
+  let mousePosition = { x: 0, y: viewportHeight/3 };
 
   document.addEventListener("mousemove", (event) => {
     clearTimeout(mouseTimer);
