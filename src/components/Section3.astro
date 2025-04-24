@@ -397,7 +397,9 @@ const language = Astro.props.language;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        photo?.classList.add("animated");
+        setTimeout(() => {
+          photo?.classList.add("animated");
+        }, 1000)     
       } else {
         photo?.classList.remove("animated");
       }

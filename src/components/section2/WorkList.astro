@@ -42,12 +42,10 @@ import Click2 from "@components/section2/ClickIcon2.astro";
 
     observer.observe(workItem);
   });
-
-
 </script>
 
 <style>
-    .work-item {
+  .work-item {
     width: 100%;
     height: 80px;
     margin-bottom: 16px;
@@ -63,22 +61,32 @@ import Click2 from "@components/section2/ClickIcon2.astro";
     /* transition: all 0.25s ease-in-out; */
     /* transform: scale(1); */
     transform-origin: center center;
-      @media (max-width:767px){
-            background-color: #143c60d5;
-          } 
+    @media (max-width: 767px) {
+      background-color: #143c60d5;
+    }
     &:hover {
-      background-color: #ffffff21;
+      --band-base:#143D60;
+      --band1:color-mix(in srgb, var(--band-base), #ffffff 2%);
+      background: repeating-linear-gradient(
+        45deg,
+        var(--band-base), 
+        var(--band-base) 5%,
+        var(--band1) 5%,
+        var(--band1) 10%
+      );
+      background-size: 200px 200px;
+      animation: move-it 1s linear infinite;
       /* color: var(--bg-color); */
       border-color: #607d8b;
       transform: scale(1.05);
 
       .icon {
         svg {
-          color:#cf7a02;
+          color: #fca728;
           opacity: 1;
           transform: translateY(-34px);
-
         }
+       
       }
     }
     .work-name {
@@ -89,6 +97,7 @@ import Click2 from "@components/section2/ClickIcon2.astro";
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+     
     }
     .icon {
       --size: 34px;
@@ -98,9 +107,9 @@ import Click2 from "@components/section2/ClickIcon2.astro";
       display: flex;
       flex-direction: column;
       flex: 0 0 var(--size);
-      @media (max-width:767px){
+      @media (max-width: 767px) {
         --size: 28px;
-          }
+      }
       svg {
         width: var(--size);
         height: var(--size);
@@ -117,11 +126,21 @@ import Click2 from "@components/section2/ClickIcon2.astro";
   .work-item {
     scale: 0;
     opacity: 0;
-    transition: transform 0.25s, scale 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transition:
+      transform 0.25s,
+      scale 0.5s ease-in-out,
+      opacity 0.5s ease-in-out;
     &.animated {
       scale: 1;
       opacity: 1;
     }
   }
-
+  @keyframes move-it {
+    0% {
+      background-position: initial;
+    }
+    100% {
+      background-position: 200px 0px;
+    }
+  }
 </style>
