@@ -30,6 +30,7 @@ const language = Astro.props.language;
     <div class="col-right">
       <div class="title">{language === "es" ? "CONTACTO" : "CONTACT"}</div>
       <div class="content">
+        <!-- Card -->
         <div class="card">
           <div class="photo">
             <img src={photo.src} alt="Roberto Stringa" />
@@ -40,7 +41,7 @@ const language = Astro.props.language;
                 >{
                   language === "es"
                     ? "Diseñador/Desarrollador FrontEnd"
-                    : "Designer/FrontEnd Dev"
+                    : "Designer / FrontEnd Dev"
                 }</i
               ></span
             >
@@ -64,11 +65,13 @@ const language = Astro.props.language;
             </a>
           </div>
         </div>
+        <!-- Card After -->
         <div class="card-after">
           <p>{ language === "es" 
           ? "¿Eres una agencia de desarrollo web o un profesional del rubro?" 
           : "Are you a web development agency or a professional in the industry?"}</p>
         </div>
+        <!-- Form -->
         <div class="form">
           <h4>{language === "es" ? "Trabaja conmigo" : "Work with me"}</h4>
           <form id="myForm">
@@ -88,10 +91,12 @@ const language = Astro.props.language;
             <div class="message"></div>
           </form>
         </div>
+         <!-- Side Text -->
+        <div class="side-text"><span>Dev</span></div>
       </div>
     </div>
   </div>
-  <!-- <div class="side-texture"></div> -->
+  
 </section>
 
 <style>
@@ -404,15 +409,19 @@ const language = Astro.props.language;
       font-size: 16px;
     }
   }
-  .side-texture {
+  .side-text {
+    display: grid;
+    align-items: start;
+    justify-content: center;
     position: absolute;
     z-index: 0;
     top: 0;
-    left: calc((100dvw - 1250px) / 2);
-    /* width: calc((100dvw - 1250px - (var(--scroll-width) + 12px)) / 2);  */
-    width: 145px;
+    right: -200px;
+    width: 200px;
     height: 100%;
-    --band-base: #143c6000;
+    text-transform: uppercase;
+    overflow: hidden;
+    /* --band-base: #143c6000;
     --band1: color-mix(in srgb, var(--band-base), #ffffff 2%);
     background: repeating-linear-gradient(
       45deg,
@@ -422,7 +431,20 @@ const language = Astro.props.language;
       var(--band1) 10%
     );
     background-size: 200px 200px;
-    animation: move-it 1s linear infinite;
+    animation: move-it 1s linear infinite; */
+    span {
+      display: block;
+        font-size: 130px;
+        font-weight: 900;
+        color: #54718b;
+        opacity: 0.5;
+        letter-spacing: -7px;
+        rotate: -90deg;
+        margin: 0 auto;
+        line-height: 0;
+        /* transform: translatey(-50px); */
+        transform: translate(-51%, -130px);
+    }
   }
   .card-after {
     padding-left: 8px;
