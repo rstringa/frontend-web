@@ -88,6 +88,20 @@ import Click2 from "@components/section2/ClickIcon2.astro";
         }
        
       }
+      &::after {
+        --round:4px;
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: var(--round);
+        height: 2px;
+        width:0;
+        background-color: color-mix(in srgb, var(--band-base), #ffffff 10%);
+        animation: load 1s ease-in forwards;
+      }
+      & .work-name {
+        color:#FF9500;
+      }
     }
     .work-name {
       font-size: 21px;
@@ -141,6 +155,11 @@ import Click2 from "@components/section2/ClickIcon2.astro";
     }
     100% {
       background-position: 200px 0px;
+    }
+  }
+  @keyframes load {
+    to {
+      width:calc(100% - var(--round)*2);
     }
   }
 </style>
