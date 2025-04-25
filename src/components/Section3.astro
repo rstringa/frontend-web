@@ -64,6 +64,11 @@ const language = Astro.props.language;
             </a>
           </div>
         </div>
+        <div class="card-after">
+          <p>{ language === "es" 
+          ? "¿Eres una agencia de desarrollo web o un profesional del rubro?" 
+          : "Are you a web development agency or a professional in the industry?"}</p>
+        </div>
         <div class="form">
           <h4>{language === "es" ? "Trabaja conmigo" : "Work with me"}</h4>
           <form id="myForm">
@@ -278,7 +283,7 @@ const language = Astro.props.language;
           bottom: 20px;
           right: 30px;
           @media (max-width: 767px) {
-            bottom: -85px;
+            bottom: -50px;
             right: 0;
           }
           & a {
@@ -295,6 +300,10 @@ const language = Astro.props.language;
             &:hover {
               background-color: #ff9500;
             }
+            @media (max-width: 767px) {
+              width: 40px;
+              height: 40px;
+            }
           }
         }
       }
@@ -309,6 +318,7 @@ const language = Astro.props.language;
     margin-top: 20px;
     width: 100%;
     @media (max-width: 767px) {
+      margin-top: 50px;
       margin-bottom: 40px;
     }
     & h4 {
@@ -394,17 +404,6 @@ const language = Astro.props.language;
       font-size: 16px;
     }
   }
-
-  /* SPANISH */
-  body.es {
-    .col-right {
-      .card {
-        i {
-          text-transform: capitalize !important;
-        }
-      }
-    }
-  }
   .side-texture {
     position: absolute;
     z-index: 0;
@@ -425,6 +424,34 @@ const language = Astro.props.language;
     background-size: 200px 200px;
     animation: move-it 1s linear infinite;
   }
+  .card-after {
+    padding-left: 8px;
+     p {
+      font-size: 16px;
+      color: #fff;
+      opacity: 0.8;
+      letter-spacing: 0.025rem;
+      font-weight: 200;
+    }
+    @media (max-width: 767px) {
+      transform: translateY(60px);
+      p { 
+        font-size: 15px;
+      }
+    }
+  }
+
+  /* SPANISH */
+  body.es {
+    .col-right {
+      .card {
+        i {
+          text-transform: capitalize !important;
+        }
+      }
+    }
+  }
+
 </style>
 <script>
   const photo = document.querySelector(".photo");
