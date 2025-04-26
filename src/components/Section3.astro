@@ -2,6 +2,8 @@
 import photo from "@assets/face-mask.webp";
 import Github from "@components/section3/Github.astro";
 import LinkedIn from "@components/section3/Linkedin.astro";
+import ArrowDown from "@components/section2/ArrowDown.astro";
+import MoreInfo from "@components/section3/MoreInfo.astro";
 const language = Astro.props.language;
 ---
 
@@ -64,12 +66,19 @@ const language = Astro.props.language;
               <LinkedIn />
             </a>
           </div>
+          <div class="more-info">
+            <span>more</span><ArrowDown />
+          </div>
         </div>
         <!-- Card After -->
         <div class="card-after">
-          <p>{ language === "es" 
-          ? "¿Eres una agencia de desarrollo web o un profesional del rubro?" 
-          : "Are you a web development agency or a professional in the industry?"}</p>
+          <p>
+            {
+              language === "es"
+                ? "¿Eres una agencia de desarrollo web o un profesional del rubro?"
+                : "Are you a web development agency or a professional in the industry?"
+            }
+          </p>
         </div>
         <!-- Form -->
         <div class="form">
@@ -91,12 +100,12 @@ const language = Astro.props.language;
             <div class="message"></div>
           </form>
         </div>
-         <!-- Side Text -->
+        <!-- Side Text -->
         <div class="side-text"><span>Dev</span></div>
       </div>
     </div>
   </div>
-  
+  <MoreInfo language={language} />
 </section>
 
 <style>
@@ -288,8 +297,9 @@ const language = Astro.props.language;
           bottom: 20px;
           right: 30px;
           @media (max-width: 767px) {
+            right: auto;
+            left: 0;
             bottom: -50px;
-            right: 0;
           }
           & a {
             display: flex;
@@ -309,6 +319,37 @@ const language = Astro.props.language;
               width: 40px;
               height: 40px;
             }
+          }
+        }
+        & .more-info {
+          position: absolute;
+          z-index: 5;
+          top: 30px;
+          right: 30px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          width: fit-content;
+          padding: 5px 12px;
+          border-radius: 25px;
+          background-color: #ffffff45;
+          color: #143d60;
+          font-size: 14px;
+          line-height: 1;
+          text-transform: uppercase;
+          font-weight: 400;
+          transition: background-color 0.3s ease;
+          @media (max-width: 767px) {
+            top: auto;
+            bottom: -45px;
+            right: 0;
+          }
+          &:hover {
+            background-color: #ff9500;
+          }
+          svg {
+            transform: rotate(-90deg);
           }
         }
       }
@@ -434,21 +475,21 @@ const language = Astro.props.language;
     animation: move-it 1s linear infinite; */
     span {
       display: block;
-        font-size: 130px;
-        font-weight: 900;
-        color: #54718b;
-        opacity: 0.5;
-        letter-spacing: -7px;
-        rotate: -90deg;
-        margin: 0 auto;
-        line-height: 0;
-        /* transform: translatey(-50px); */
-        transform: translate(-51%, -130px);
+      font-size: 130px;
+      font-weight: 900;
+      color: #54718b;
+      opacity: 0.5;
+      letter-spacing: -7px;
+      rotate: -90deg;
+      margin: 0 auto;
+      line-height: 0;
+      /* transform: translatey(-50px); */
+      transform: translate(-51%, -130px);
     }
   }
   .card-after {
     padding-left: 8px;
-     p {
+    p {
       font-size: 16px;
       color: #fff;
       opacity: 0.8;
@@ -457,7 +498,7 @@ const language = Astro.props.language;
     }
     @media (max-width: 767px) {
       transform: translateY(60px);
-      p { 
+      p {
         font-size: 15px;
       }
     }
@@ -473,8 +514,24 @@ const language = Astro.props.language;
       }
     }
   }
-
 </style>
+
+<script>
+  const moreInfo = document.querySelector(".more-info");
+  const boxMoreInfo = document.querySelector(".box-more-info");
+  const close = document.querySelector(".close");
+  console.log(close);
+
+  moreInfo?.addEventListener("click", (e) => {
+    e.preventDefault();
+    boxMoreInfo?.classList.add("showing");
+  });
+  close?.addEventListener("click", (e) => {
+    e.preventDefault();
+    boxMoreInfo?.classList.remove("showing");
+  });
+</script>
+
 <script>
   const photo = document.querySelector(".photo");
   const observer = new IntersectionObserver((entries) => {

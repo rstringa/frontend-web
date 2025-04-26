@@ -1,0 +1,191 @@
+---
+import Close from "@components/section3/Close.astro";
+import Html from "@components/section3/tech/Html.astro";
+import CSS from "@components/section3/tech/Css.astro";
+import Javascript from "@components/section3/tech/Javascript.astro";
+import Git from "@components/section3/tech/Git.astro";
+import AstroIcon from "@components/section3/tech/AstroIcon.astro";
+import Illustrator from "@components/section3/tech/Illustrator.astro";
+import Photoshop from "@components/section3/tech/Photoshop.astro";
+import Woo from "@components/section3/tech/Woo.astro";
+import Figma from "@components/section3/tech/Figma.astro";
+import Elementor from "@components/section3/tech/Elementor.astro";
+import Wordpress from "@components/section3/tech/Wordpress.astro";
+const language = Astro.props.language;
+---
+
+<div class="box-more-info-mask"></div>
+<div class="box-more-info">
+  <div class="close"><Close /></div>
+  <div class="content">
+    <h2>
+      {language === "es" ? "Más sobre mí" : "More about me"}
+    </h2>
+    <p>
+      {
+        language === "es" ? (
+          <>
+            Mi nombre es Roberto, soy diseñador y desarrollador web frontend.
+            <br />
+            He trabajado en Agencias de diseño y marketing, actualmente trabajo
+            de forma independiente.
+            <br />
+            Cuento con amplia experiencia en el diseño y desarrollo de sitios y
+            aplicaciones web.
+            <br />
+            Mi objetivo es ayudar a empresas y profesionales a crear sus
+            productos digitales brindando mis conocimientos y creatividad.
+          </>
+        ) : (
+          <>
+            My name is Roberto, I'm a web frontend designer and developer.
+            <br />I have worked for design agencies and marketing, currently I
+            work independently.
+            <br />I have extensive experience in designing and developing
+            websites and applications.
+            <br />
+            My goal is to help companies and professionals create their digital
+            products, providing my knowledge and creativity.
+          </>
+        )
+      }
+    </p>
+    <br />
+    <br class="mobile-hidden" />
+    <h3>Tecnologías</h3>
+    <div class="grid-tech">
+      <Html />
+      <CSS />
+      <Javascript />
+      <Git />
+      <AstroIcon />
+      <Wordpress />
+      <Elementor />
+      <Woo />
+      <Illustrator />
+      <Photoshop />
+      <Figma />
+    </div>
+  </div>
+</div>
+<script></script>
+<style>
+  .box-more-info-mask {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    width: calc((100vw - 1280px) / 2);
+    height: 100%;
+    background: #143d60;
+    overflow: clip;
+  }
+  .box-more-info {
+    position: absolute;
+    margin: 0 auto;
+    z-index: 5;
+    top: 0;
+    left: calc(50% + 7px);
+    /* width: calc(100% - 10px); */
+    /* transform: translateX(100%); */
+    transform: translateX(50%);
+    /* pointer-events: none; */
+    transition: transform 1s ease-in-out;
+    width: 100%;
+    max-width: 1248px;
+    min-height: 100%;
+    height: max-content;
+    background: #143c60ed;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+
+    & .close {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 60px;
+      right: 60px;
+      z-index: 5;
+      opacity: 0.75;
+      color: #fff;
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+      border-radius: 50%;
+      border: 1px solid #ffffff45;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      @media (max-width: 767px) {
+        top: 70px;
+        right: 30px;
+      }
+      &:hover {
+        opacity: 1;
+        transform: rotate(-90deg);
+      }
+      svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    & .content {
+      padding: 0px 145px 0px 145px;
+      margin: 100px 0px 60px 0;
+      color: #fff;
+      /* max-height: 50%; */
+      overflow-y: auto;
+      scrollbar-width: 12px;
+      scrollbar-color: #143d60 #335775;
+      scrollbar-gutter: stable;
+      overscroll-behavior: contain;
+      @media (max-width: 767px) {
+        padding: 0px 30px 0px 30px;
+      }
+      & p {
+        font-size: 18px;
+        line-height: 1.75;
+        max-width: 80ch;
+      }
+    }
+
+    & .content::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    & .content::-webkit-scrollbar-track {
+      background: #335775;
+    }
+
+    & .content::-webkit-scrollbar-thumb {
+      background-color: #143d60;
+      border-radius: 4px;
+    }
+  }
+  .box-more-info.showing {
+    transform: translateX(-50%);
+    pointer-events: all;
+    transition: transform 1s ease-in-out;
+  }
+  .grid-tech {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    }
+    & svg {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  @media (max-width: 767px) {
+    .mobile-hidden {
+      display: none;
+    }
+  }
+</style>
