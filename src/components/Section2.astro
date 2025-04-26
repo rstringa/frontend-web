@@ -2,6 +2,7 @@
 import WorkList from "@components/section2/WorkList.astro";
 import WheelWhite from "@components/section2/WheelWhite.astro";
 import ArrowDown from "@components/section2/ArrowDown.astro";
+import ArrowUp from "@components/section2/ArrowUp.astro";
 import Eye from "@components/section1/Eye.astro";
 const language = Astro.props.language;
 ---
@@ -45,8 +46,7 @@ const language = Astro.props.language;
 <div class="more-container">
   <div class="more">
     <span>
-      {language === "es" ? "VER MÁS PROYECTOS" : "VIEW MORE PROJECTS"}<ArrowDown
-      />
+      {language === "es" ? "VER MÁS PROYECTOS" : "VIEW MORE PROJECTS"}<ArrowUp/>
     </span>
   </div>
 </div>
@@ -221,14 +221,16 @@ const language = Astro.props.language;
         border-radius: 8px;
         z-index: 5;
         background-color: var(--bg-color);
+        transition: background-color 0.3s ease;
         & svg {
+          /* transform: rotate(180deg); */
           margin-left: 10px;
-        }
-        &:hover {
-          color: #fff;
-          background-color: #325675;
-          & svg {
-            animation: down 2.5s ease-in infinite forwards;
+        }    
+        &:hover { 
+          color: #fff; 
+          background-color: #325675; 
+          & svg { 
+            animation: down 2.5s ease-in infinite; 
           }
         }
         @media (max-width: 767px) {
@@ -251,9 +253,9 @@ const language = Astro.props.language;
       }
     }
   }
+
   @keyframes down {
-    0%,
-    100% {
+    0% {
       transform: translateY(0);
     }
     10% {
@@ -267,10 +269,10 @@ const language = Astro.props.language;
     }
     40% {
       transform: translateY(0);
-    }
-    /* El resto es para esperar */
+    }  
+    /* El resto es para esperar */   
     100% {
-      transform: translateY(0);
+      transform: translateY(0); 
     }
   }
   .section2.showing-more {
