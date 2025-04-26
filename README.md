@@ -1,5 +1,5 @@
 # Experimentando Astro
-https://frontend-web-gray.vercel.app/
+https://stringa-dev.vercel.app/
 
 - Maquetación experimental
 - Componentes Astro
