@@ -4,7 +4,8 @@
   speed="1"
   style="width: 300px; height: 300px;"
   loop
-  autoplay></dotlottie-player>
+  autoplay>
+</dotlottie-player>
 
 <style>
   dotlottie-player {
@@ -18,7 +19,8 @@
       top 2s ease-in-out,
       left 2s ease-in-out,
       filter 0.5s ease-in-out,
-      transform 0.5s ease-in-out;
+      transform 0.5s ease-in-out,
+      margin 1s ease-in-out;
     &:hover {
       filter: drop-shadow(2px 24px 6px rgba(0, 0, 0, 0.7));
     }
@@ -32,6 +34,7 @@
 </style>
 
 <script>
+
   const dotLottie = document.querySelector("dotlottie-player") as HTMLElement;
  
   
@@ -62,12 +65,29 @@
       update();
     });
 
+   // Si el usuario apreta control + click en el dron, el dron se elimina
+   dotLottie.addEventListener("click", (event) => {
+    if (event.ctrlKey) {
+      deleteDron();
+    }
+  });
+
   function getMousePosition(event) {
     const rect = event.target.getBoundingClientRect();
     return {
       x: event.clientX - rect.left / 2,
       y: event.clientY - rect.top / 2,
     };
+  }
+
+  function deleteDron() {
+    scale = 0.5;
+    let yPos = 700;
+    //dotLottie.style.setProperty("transform", `scale(${scale})`);
+    dotLottie.style.setProperty("margin-top", `${yPos}px`);    
+    setTimeout(() => {
+      dotLottie.remove();
+    }, 1000); 
   }
 
   function update() {
