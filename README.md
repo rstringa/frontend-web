@@ -1,4 +1,4 @@
-# Experimentando Astro
+# Sitio personal en Astro.js
 https://stringa-dev.vercel.app/
 
 - Maquetación avanzada.
