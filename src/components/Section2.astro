@@ -59,13 +59,13 @@ const language = Astro.props.language;
     background: var(--bg-color);
     border-top: 1px solid #ffffff9b;
     height: fit-content;
-    min-height: 100vh;
+    min-height: 100dvh;
     position: relative;
     overflow: clip;
     transition: height 0.2s ease-in-out;
     transition-behavior: allow-discrete;
     @starting-style {
-      height: 100vh;
+      height: 100dvh;
     }
     /* padding: 60px 0; */
     &::before {
@@ -253,28 +253,6 @@ const language = Astro.props.language;
       }
     }
   }
-
-  @keyframes down {
-    0% {
-      transform: translateY(0);
-    }
-    10% {
-      transform: translateY(3px);
-    }
-    20% {
-      transform: translateY(0);
-    }
-    30% {
-      transform: translateY(3px);
-    }
-    40% {
-      transform: translateY(0);
-    }  
-    /* El resto es para esperar */   
-    100% {
-      transform: translateY(0); 
-    }
-  }
   .section2.showing-more {
     height: auto;
     .more {
@@ -316,11 +294,31 @@ const language = Astro.props.language;
     opacity: 0.15;
     scale: 2;
     @media (max-width: 1024px) {
-      bottom: 0vh;
+      bottom: 0;
       width: 130px;
     }
   }
-
+  @keyframes down {
+    0% {
+      transform: translateY(0);
+    }
+    10% {
+      transform: translateY(3px);
+    }
+    20% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(3px);
+    }
+    40% {
+      transform: translateY(0);
+    }  
+    /* El resto es para esperar */   
+    100% {
+      transform: translateY(0); 
+    }
+  }
   @keyframes up {
     0% {
       transform: translateY(0);
