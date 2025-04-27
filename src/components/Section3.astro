@@ -92,6 +92,7 @@ const language = Astro.props.language;
               >{language === "es" ? "Mensaje:" : "Message:"}</label
             >
             <textarea id="text_area" name="text_area" required></textarea>
+            <p class="mini">{language === "es" ? "Todos los campos son requeridos." : "Complete all fields please."}</p> 
             <input
               type="submit"
               value={language === "es" ? "Ok, enviar" : "Ok, I send"}
@@ -412,7 +413,6 @@ const language = Astro.props.language;
       background-color: #143d60;
       color: #fff;
       font-size: 16px;
-      margin-bottom: 20px;
       width: 100%;
       max-width: 710px;
       min-height: 150px;
@@ -421,6 +421,16 @@ const language = Astro.props.language;
         border-color: #ff9800;
         box-shadow: 0 0 0 1px #ff9800;
       }
+    }
+    & .mini {
+      font-size: 14px;
+      font-weight: 200;
+      line-height: 1.5;
+      margin-left: 8px;
+      color: #fff;
+      opacity: 0.5;
+      margin-bottom: 30px; 
+      letter-spacing: 1px;
     }
     & #myForm {
       display: contents;
@@ -520,7 +530,6 @@ const language = Astro.props.language;
   const moreInfo = document.querySelector(".more-info");
   const boxMoreInfo = document.querySelector(".box-more-info");
   const close = document.querySelector(".close");
-  console.log(close);
 
   moreInfo?.addEventListener("click", (e) => {
     e.preventDefault();
