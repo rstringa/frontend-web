@@ -26,14 +26,14 @@ interface Props {
     @media (max-width: 768px) {
       display: none;
     }
-    img {
+    & img {
       --initial-up:60%;
       display: block;
       transform: translateY(var(--initial-up));
       transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
     &.animated {
-      img {
+      & img {
         transform: translateY(var(--random-y, 0));
        /* animation: slide-up 4s cubic-bezier(0.075, 0.82, 0.165, 1) both; */
       }   
