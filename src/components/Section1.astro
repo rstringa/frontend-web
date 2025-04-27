@@ -56,7 +56,8 @@ const language = Astro.props.language;
   </div>
 </section>
 
-<style>
+
+<style is:inline>
   .section1 {
     --primary-color: #ff9500;
     --light-lines: #ffc107;
@@ -68,7 +69,7 @@ const language = Astro.props.language;
   }
 
   .top {
-    background: url(../assets/section1-top-bg-50.webp) no-repeat center;
+    background: url(src/assets/section1-top-bg-50.webp) no-repeat center;
     background-size: cover;
     width: 100vw;
     height: 40dvh;
@@ -153,14 +154,6 @@ const language = Astro.props.language;
       border-left: 1px solid var(--light-lines);
       border-right: 1px solid var(--light-lines);
       pointer-events: none;
-
-      /* & .name {
-        position: relative;
-        top:50%;
-        text-transform: uppercase;
-        font-weight: 200;
-        font-size: 21px;
-      } */
     }
   }
   .contact-text {
@@ -195,7 +188,7 @@ const language = Astro.props.language;
   }
   .box-lines {
     margin-top: 5dvh;
-    background: url("../assets/section1-blurtext.webp") no-repeat right 10px;
+    background: url("src/assets/section1-blurtext.webp") no-repeat right 10px;
     background-size: contain;
     position: relative;
     @media (max-width: 767px) {
@@ -312,3 +305,4 @@ const language = Astro.props.language;
     }
   }
 </style>
+
