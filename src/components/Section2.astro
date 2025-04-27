@@ -80,7 +80,7 @@ const language = Astro.props.language;
       backdrop-filter: blur(3px);
       pointer-events: none; */
     }
-    .vertical-lines {
+    & .vertical-lines {
       position: absolute;
       z-index: 10;
       top: 0;
@@ -92,7 +92,7 @@ const language = Astro.props.language;
       border-right: 1px solid var(--lines);
       pointer-events: none;
     }
-    .grid {
+    & .grid {
       position: relative;
       display: grid;
       grid-template-columns: auto 1fr;
@@ -101,7 +101,7 @@ const language = Astro.props.language;
       left: 7px;
       margin: 0 auto;
       height: 100%;
-      .title {
+      & .title {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -122,7 +122,7 @@ const language = Astro.props.language;
           animation: up 5s 10s ease-out infinite;
         }
 
-        h2 {
+        & h2 {
           font-size: 200px;
           font-weight: 900;
           color: #fff;
@@ -134,7 +134,7 @@ const language = Astro.props.language;
           line-height: 0;
           left: -4px;
         }
-        .work-text {
+        & .work-text {
           display: flex;
           flex-direction: column;
           width: 100%;
@@ -146,7 +146,7 @@ const language = Astro.props.language;
             bottom: auto;
             left: 20px;
           }
-          span {
+          & span {
             display: block;
             color: #ff9800;
             font-size: 15px;
@@ -156,7 +156,7 @@ const language = Astro.props.language;
           }
         }
       }
-      .list {
+      & .list {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -176,13 +176,13 @@ const language = Astro.props.language;
       }
     }
   }
-  .more-container {
+  & .more-container {
     background: #143d60;
     margin-top: 0px;
     position: relative;
     z-index: 20;
     height: 0;
-    .more {
+    & .more {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -211,7 +211,7 @@ const language = Astro.props.language;
         height: 1px;
       }
 
-      span {
+      & span {
         color: #ffffffd1;
         font-size: 16px;
         text-align: center;
