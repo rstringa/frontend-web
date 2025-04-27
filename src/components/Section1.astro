@@ -208,7 +208,8 @@ const language = Astro.props.language;
       & .image-lines {
         min-width: 1250px;
       }
-      & .eye {
+    }
+    & .eye {
         position: absolute;
         top: 27px;
         left: calc(42% + 5px);
@@ -218,10 +219,9 @@ const language = Astro.props.language;
         }
         @media (max-width: 768px) {
           display: none;
-        }
-      }
+        }  
     }
-    .wheel {
+    & .wheel {
       position: absolute;
       bottom: -20px;
       display: flex;
