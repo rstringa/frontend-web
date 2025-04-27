@@ -108,7 +108,7 @@ const language = Astro.props.language;
   <MoreInfo language={language} />
 </section>
 
-<style>
+<style is:inline>
   .section3 {
     --lines: #ffffff45;
     --bg-color: #143d60;
@@ -348,14 +348,14 @@ const language = Astro.props.language;
           &:hover {
             background-color: #ff9500;
           }
-        
+          & svg  { 
+            transform: rotate(-90deg);
+          }
         }
       }
     }
   }
-  .more-info svg {
-    transform: rotate(-90deg);
-  }
+
   .form {
     display: flex;
     flex-direction: column;
