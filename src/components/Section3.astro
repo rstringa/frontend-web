@@ -403,6 +403,12 @@ const language = Astro.props.language;
         border-color: #ff9800;
         box-shadow: 0 0 0 1px #ff9800;
       }
+      &:is(:user-valid) {
+        border-color: #02d622e6;
+      }
+      &:is(:user-invalid) {
+        border-color: #fe5500;
+      }
     }
     & textarea {
       font-family: inherit;
@@ -420,6 +426,12 @@ const language = Astro.props.language;
         outline: none;
         border-color: #ff9800;
         box-shadow: 0 0 0 1px #ff9800;
+      }
+      &:is(:user-valid) {
+        border-color: #02d622e6;
+      }
+      &:is(:user-invalid) {
+        border-color: #fe5500;
       }
     }
     & .mini {
