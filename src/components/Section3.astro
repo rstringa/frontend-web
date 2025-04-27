@@ -348,7 +348,7 @@ const language = Astro.props.language;
           &:hover {
             background-color: #ff9500;
           }
-          svg {
+          & svg {
             transform: rotate(-90deg);
           }
         }
@@ -489,7 +489,7 @@ const language = Astro.props.language;
   }
   .card-after {
     padding-left: 8px;
-    p {
+    & p {
       font-size: 16px;
       color: #fff;
       opacity: 0.8;
@@ -498,7 +498,7 @@ const language = Astro.props.language;
     }
     @media (max-width: 767px) {
       transform: translateY(60px);
-      p {
+      & p {
         font-size: 15px;
       }
     }
