@@ -10,6 +10,10 @@ import TypeEffect1 from "@components/section1/TypeEffect1.astro";
 import Facemask from "@components/section1/Facemask.astro";
 import Eye from "@components/section1/Eye.astro";
 import Dron from "@components/Dron.astro";
+// BG Images
+import topBg from '@assets/section1-top-bg-50.webp';
+import blurText from '@assets/section1-blurtext.webp';
+
 // Get language from component in Index.astro
 const language = Astro.props.language;
 ---
@@ -69,7 +73,7 @@ const language = Astro.props.language;
   }
 
   .top {
-    background: url(src/assets/section1-top-bg-50.webp) no-repeat center;
+    background: url({topBg}) no-repeat center;
     background-size: cover;
     width: 100vw;
     height: 40dvh;
@@ -188,7 +192,7 @@ const language = Astro.props.language;
   }
   .box-lines {
     margin-top: 5dvh;
-    background: url("src/assets/section1-blurtext.webp") no-repeat right 10px;
+    background: url({blurText}) no-repeat right 10px;
     background-size: contain;
     position: relative;
     @media (max-width: 767px) {
