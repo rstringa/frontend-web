@@ -356,7 +356,9 @@ const language = Astro.props.language;
       }
     }
   }
-
+  /* form:has(#email:user-invalid) label[for="email"] { 
+  color: #fe5500;
+  } */
   .form {
     display: flex;
     flex-direction: column;
@@ -386,6 +388,7 @@ const language = Astro.props.language;
       margin-left: 8px;
       text-transform: capitalize;
     }
+   
     & input {
       font-size: 18px;
       border: 1px solid #ffffff45;
