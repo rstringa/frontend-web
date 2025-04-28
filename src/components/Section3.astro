@@ -4,6 +4,7 @@ import Github from "@components/section3/Github.astro";
 import LinkedIn from "@components/section3/Linkedin.astro";
 import ArrowDown from "@components/section2/ArrowDown.astro";
 import MoreInfo from "@components/section3/MoreInfo.astro";
+import Envelop from "@components/section3/Envelop.astro";
 const language = Astro.props.language;
 ---
 
@@ -82,6 +83,7 @@ const language = Astro.props.language;
         </div>
         <!-- Form -->
         <div class="form">
+          <div class="box-envelop"><Envelop/></div>
           <h4>{language === "es" ? "Trabaja conmigo" : "Work with me"}</h4>
           <form id="myForm">
             <label for="name">{language === "es" ? "Nombre:" : "Name:"}</label>
@@ -366,6 +368,7 @@ const language = Astro.props.language;
     justify-content: start;
     margin-top: 20px;
     width: 100%;
+    position: relative;
     @media (max-width: 767px) {
       margin-top: 50px;
       margin-bottom: 40px;
@@ -474,6 +477,24 @@ const language = Astro.props.language;
       color: #ff9800;
       font-size: 16px;
     }
+    & .box-envelop {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      z-index: 0;
+      opacity: 0;
+      &.animated {
+        animation:
+        rotate-envelop 0.75s 0.25s linear infinite, 
+        move-envelop 2s 0.10s ease-out;
+      }
+      & svg {
+        width: 80px;
+        height: auto; 
+        object-fit: contain;
+        fill:#ff9800;
+      }
+    }
   }
   .side-text {
     display: grid;
@@ -539,6 +560,30 @@ const language = Astro.props.language;
       }
     }
   }
+
+  @keyframes move-envelop {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    50% {
+      bottom: 400px;
+    }
+    100% {
+      opacity: 0;
+      bottom: 40px;
+    }
+  }
+    @keyframes rotate-envelop {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 </style>
 
 <script>
@@ -581,9 +626,12 @@ const language = Astro.props.language;
 
   const message = document.querySelector(".message");
   const myForm = document.getElementById("myForm") as HTMLFormElement;
+  const boxEnvelop = document.querySelector(".box-envelop");
 
   myForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+
     // Obtener los valores de los campos
     const name = (document.getElementById("name") as HTMLInputElement).value;
     const email = (document.getElementById("email") as HTMLInputElement).value;
@@ -612,6 +660,8 @@ const language = Astro.props.language;
           const data = await res.json();
           message.innerHTML =
             "¡Great, thanks for your message! I’ll be in touch shortly.";
+            boxEnvelop?.classList.remove("animated");
+            boxEnvelop?.classList.add("animated");  
         } else {
           // La solicitud no fue exitosa
           message.innerHTML =
