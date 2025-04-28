@@ -15,7 +15,7 @@ const language = Astro.props.language;
   <div class="grid">
     <div class="title">
       <Eye fill="#ff9800" />
-      <h2>{language === "es" ? "WORK" : "WORK"}</h2>
+      <h2 class="glitch">{language === "es" ? "WORK" : "WORK"}</h2>
       <div class="work-text">
         {
           language === "es" ? (
@@ -122,7 +122,7 @@ const language = Astro.props.language;
           animation: up 5s 10s ease-out infinite;
         }
 
-        & h2 {
+        .glitch {
           font-size: 200px;
           font-weight: 900;
           color: #fff;
@@ -134,7 +134,10 @@ const language = Astro.props.language;
           line-height: 0;
           left: -4px;
         }
-        & .work-text {
+        .glitch-clone {
+          animation:glitch 10s linear 5;
+        }
+        .work-text {
           display: flex;
           flex-direction: column;
           width: 100%;
@@ -330,17 +333,44 @@ const language = Astro.props.language;
       transform: translateY(0);
     }
   }
+  @keyframes glitch {
+    0% {
+      transform: translateX(0);
+    }
+    0.5% { 
+      transform: translate(25px, 0px); 
+      filter:blur(5px);   
+    }
+    1% {
+      transform: translateX(0);
+      filter:blur(0px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const section2 = document.querySelector(".section2");
     const more = document.querySelector(".more");
+    
+    // MORE
     more?.addEventListener("click", () => {
       if (section2) {
         section2.classList.add("showing-more");
         more.classList.add("showing-all");
       }
     });
+
+    // GLITCH
+    const glitch = document.querySelector(".glitch");
+    if (glitch) {
+      const clone = glitch.cloneNode(true);
+      (clone as HTMLElement).classList.add("glitch-clone");
+      glitch.parentNode?.appendChild(clone);
+    }
+
   });
 </script>
