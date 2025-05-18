@@ -19,7 +19,7 @@ const language = Astro.props.language;
 <section class="section section1">
   <div class="top">
     <div class="switcher">
-      <a href="/" class={language==="en" ? "active" : ""}>EN</a>
+      <a href="/" class={language === "en" ? "active" : ""}>EN</a>
       <a href="/es" class={language === "es" ? "active" : ""}>ES</a>
     </div>
     <Eye fill="#787878" />
@@ -57,13 +57,12 @@ const language = Astro.props.language;
   </div>
 </section>
 
-
 <style is:inline>
   .section1 {
     --primary-color: #ff9500;
     --light-lines: #ffc107;
     overflow: clip;
-    
+
     & img {
       max-width: 100%;
     }
@@ -189,7 +188,7 @@ const language = Astro.props.language;
   }
   .box-lines {
     margin-top: 5dvh;
-    background: url(/section1-blurtext.webp) no-repeat right 10px; 
+    background: url(/section1-blurtext.webp) no-repeat right 10px;
     background-size: contain;
     position: relative;
     @media (max-width: 767px) {
@@ -204,16 +203,16 @@ const language = Astro.props.language;
       }
     }
     & .eye {
-        position: absolute;
-        top: 27px;
-        left: calc(42% + 5px);
-        @media (max-width: 1210px) {
-          left: calc(50%);
-          top: 0;
-        }
-        @media (max-width: 768px) {
-          display: none;
-        }  
+      position: absolute;
+      top: 27px;
+      left: calc(42% + 5px);
+      @media (max-width: 1210px) {
+        left: calc(50%);
+        top: 0;
+      }
+      @media (max-width: 768px) {
+        display: none;
+      }
     }
     & .wheel {
       position: absolute;
@@ -306,4 +305,3 @@ const language = Astro.props.language;
     }
   }
 </style>
-

@@ -1,5 +1,5 @@
 ---
-import Analytics from '@vercel/analytics/astro'
+import Analytics from "@vercel/analytics/astro";
 const url = new URL(Astro.request.url);
 const isES = url.pathname.includes("/es");
 ---
@@ -14,12 +14,20 @@ const isES = url.pathname.includes("/es");
     />
     <meta name="generator" content={Astro.generator} />
     <title>Roberto Stringa - Designer / FrontEnd DEV</title>
-    {isES 
-    ?  <meta name="description" content="Diseñador web y desarrollador frontend con pasión por la maquetación CSS. Diseño sitios modernos, rápidos y de alta calidad. ¿Te ayudo con el tuyo?" /> 
-  
-    :  <meta name="description" content="Web designer and frontend developer passionate about CSS layout. I build modern, fast websites with top quality. Need help with yours?" />
-  }
-   
+    {
+      isES ? (
+        <meta
+          name="description"
+          content="Diseñador web y desarrollador frontend con pasión por la maquetación CSS. Diseño sitios modernos, rápidos y de alta calidad. ¿Te ayudo con el tuyo?"
+        />
+      ) : (
+        <meta
+          name="description"
+          content="Web designer and frontend developer passionate about CSS layout. I build modern, fast websites with top quality. Need help with yours?"
+        />
+      )
+    }
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -37,7 +45,7 @@ const isES = url.pathname.includes("/es");
     />
   </head>
   <body class={isES ? "es" : "en"}>
-    <slot/>
+    <slot />
     <Analytics />
   </body>
 </html>
@@ -53,7 +61,7 @@ const isES = url.pathname.includes("/es");
     height: 100%;
     background-color: #fc9300;
     /* scroll-snap-type: y proximity;  */
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
     overflow-x: hidden;
   }
   @font-face {
@@ -79,18 +87,18 @@ const isES = url.pathname.includes("/es");
 <script type="module">
   // Initialize Lenis
   const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
-      direction: "vertical",
-      gestureDirection: "vertical",
-      smooth: true,
-      smoothTouch: false,
-      touchMultiplier: 2,
-    });
+    duration: 1.2,
+    easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
+    direction: "vertical",
+    gestureDirection: "vertical",
+    smooth: true,
+    smoothTouch: false,
+    touchMultiplier: 2,
+  });
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+  function raf(time) {
+    lenis.raf(time);
     requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 </script>
