@@ -23,3 +23,4 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 To-do.html
+src/data/frontend-web.code-workspace

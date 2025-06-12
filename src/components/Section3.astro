@@ -86,12 +86,12 @@ const language = Astro.props.language;
           <div class="box-envelop"><Envelop/></div>
           <h4>{language === "es" ? "Trabaja conmigo" : "Work with me"}</h4>
           <form id="myForm">
-            <label for="name">{language === "es" ? "Nombre:" : "Name:"}</label>
+            <label for="name">{language === "es" ? "Nombre" : "Name"}</label>
             <input type="text" id="name" name="name" required />
-            <label for="email">{language === "es" ? "Email:" : "Email:"}</label>
+            <label for="email">{language === "es" ? "Email" : "Email"}</label>
             <input type="email" id="email" name="email" required />
             <label for="subject"
-              >{language === "es" ? "Mensaje:" : "Message:"}</label
+              >{language === "es" ? "Mensaje" : "Message"}</label
             >
             <textarea id="text_area" name="text_area" required></textarea>
             <p class="mini">{language === "es" ? "Todos los campos son requeridos." : "Complete all fields please."}</p> 
@@ -259,13 +259,12 @@ const language = Astro.props.language;
           }
           & span {
             display: block;
-            font-size: 18px;
             line-height: 1.5;
             color: #ffffff;
             font-weight: 200;
             letter-spacing: 0.5px;
             text-transform: none;
-            font-size: 16px;
+            font-size: 14px;
             &.name {
               font-size: 19px;
               font-weight: 600;
@@ -336,7 +335,7 @@ const language = Astro.props.language;
           width: fit-content;
           padding: 5px 12px;
           border-radius: 25px;
-          background-color: #ffffff45;
+          background-color:#fca728cc;
           color: #143d60;
           font-size: 14px;
           line-height: 1;
