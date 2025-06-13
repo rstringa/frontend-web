@@ -68,7 +68,13 @@ const language = Astro.props.language;
             </a>
           </div>
           <div class="more-info">
-            <span>more</span><ArrowDown />
+            <span>
+              {
+                language === "es"
+                  ? "más sobre mí"
+                  : "more about me"
+              }  
+            </span><ArrowDown />
           </div>
         </div>
         <!-- Card After -->
@@ -347,11 +353,15 @@ const language = Astro.props.language;
             bottom: -45px;
             right: 0;
           }
+          & span { 
+            margin-right: 6px;
+          }
           &:hover {
             background-color: #ff9500;
           }
           & svg  { 
-            transform: rotate(-90deg);
+            transform: rotate(-90deg); 
+            width: 19px;
           }
         }
       }
