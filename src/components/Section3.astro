@@ -93,14 +93,20 @@ const language = Astro.props.language;
           <h4>{language === "es" ? "Trabaja conmigo" : "Work with me"}</h4>
           <form id="myForm">
             <label for="name">{language === "es" ? "Nombre" : "Name"}</label>
-            <input type="text" id="name" name="name" required />
+            <input type="text" id="name" name="name" required 
+            placeholder={language === "es" ? "Tu nombre" : "Your name"} 
+            />
             <label for="email">{language === "es" ? "Email" : "Email"}</label>
-            <input type="email" id="email" name="email" required />
+            <input type="email" id="email" name="email" required 
+            placeholder={language === "es" ? "Tu email" : "Your email"} 
+            />
             <label for="subject"
               >{language === "es" ? "Mensaje" : "Message"}</label
             >
-            <textarea id="text_area" name="text_area" required></textarea>
-            <p class="mini">{language === "es" ? "Todos los campos son requeridos." : "Complete all fields please."}</p> 
+            <textarea id="text_area" name="text_area" required
+            placeholder={language === "es" ? "Déjame tu mensaje..." : "Leave your message..."}
+            ></textarea>
+            <p class="mini">{language === "es" ? "Todos los campos son requeridos." : "Complete all fields please."}</p>
             <input
               type="submit"
               value={language === "es" ? "Ok, enviar" : "Ok, I send"}
@@ -370,6 +376,11 @@ const language = Astro.props.language;
   /* form:has(#email:user-invalid) label[for="email"] { 
   color: #fe5500;
   } */
+  .form *::placeholder {
+        font-family: inherit;
+        font-size: 14px;
+        color:var(--white-50);
+        opacity: 0.25;} 
   .form {
     display: flex;
     flex-direction: column;
@@ -378,6 +389,7 @@ const language = Astro.props.language;
     margin-top: 20px;
     width: 100%;
     position: relative;
+
     @media (max-width: 767px) {
       margin-top: 50px;
       margin-bottom: 40px;
@@ -404,7 +416,7 @@ const language = Astro.props.language;
     & input {
       font-size: 18px;
       border: 1px solid #ffffff45;
-      padding: 16px 30px;
+      padding: 16px 30px 16px 20px;
       border-radius: 8px;
       background-color: #143d60;
       color: #fff;
@@ -412,7 +424,7 @@ const language = Astro.props.language;
       margin-bottom: 20px;
       width: 100%;
       max-width: 710px;
-
+     
       &:focus {
         outline: none;
         border-color: #ff9800;
@@ -429,7 +441,7 @@ const language = Astro.props.language;
       font-family: inherit;
       font-size: 18px;
       border: 1px solid #ffffff45;
-      padding: 16px 30px;
+      padding: 16px 30px 16px 20px;
       border-radius: 8px;
       background-color: #143d60;
       color: #fff;
