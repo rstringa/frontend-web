@@ -46,7 +46,7 @@ const language = Astro.props.language;
         <img class="image-lines" src={linesImage.src} alt="" height="186" />
         <Eye fill="var(--primary-color, #fff)" />
         <div class="contact-text">
-          <a href="#contact" title="Contact US"
+          <a href="#contact" title={language === "es" ? "Ir al formulario de contacto" : "Go to contact form"}
             >{language === "es" ? "Contáctame" : "Contact me"}</a
           >
         </div>
