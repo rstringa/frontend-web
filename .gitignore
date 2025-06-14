@@ -24,3 +24,4 @@ pnpm-debug.log*
 .idea/
 To-do.html
 src/data/frontend-web.code-workspace
+frontend-web.code-workspace

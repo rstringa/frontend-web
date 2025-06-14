@@ -109,6 +109,7 @@ const language = Astro.props.language;
             <p class="mini">{language === "es" ? "Todos los campos son requeridos." : "Complete all fields please."}</p>
             <input
               type="submit"
+              
               value={language === "es" ? "Ok, enviar" : "Ok, I send"}
               class="btn-send"
             />
@@ -421,21 +422,21 @@ const language = Astro.props.language;
       background-color: #143d60;
       color: #fff;
       font-size: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 26px;
       width: 100%;
       max-width: 710px;
      
       &:focus {
         outline: none;
-        border-color: #ff9800;
-        box-shadow: 0 0 0 1px #ff9800;
+        border-color: #ffffff75;
+        /* box-shadow: 0 0 0 1px #ff9800;  */
       }
       &:is(:user-valid) {
         border-color: #02d622e6;
-      }
+      } 
       &:is(:user-invalid) {
-        border-color: #fe5500;
-      }
+        border-color: #fe5500d5;
+      } 
     }
     & textarea {
       font-family: inherit;
@@ -451,15 +452,15 @@ const language = Astro.props.language;
       min-height: 150px;
       &:focus {
         outline: none;
-        border-color: #ff9800;
-        box-shadow: 0 0 0 1px #ff9800;
+        border-color: #ffffff75;
+        /* box-shadow: 0 0 0 1px #ff9800;  */
       }
       &:is(:user-valid) {
         border-color: #02d622e6;
-      }
+      } 
       &:is(:user-invalid) {
-        border-color: #fe5500;
-      }
+        border-color: #fe5500d5;
+      }  
     }
     & .mini {
       font-size: 14px;
@@ -486,6 +487,10 @@ const language = Astro.props.language;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      &:disabled {
+        background-color: #ff9800a0;
+        cursor: not-allowed; 
+      }
       @media (max-width: 767px) {
         font-size: 21px;
       }
