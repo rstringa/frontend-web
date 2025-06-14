@@ -90,7 +90,7 @@ const language = Astro.props.language;
         <!-- Form -->
         <div class="form">
           <div class="box-envelop"><Envelop/></div>
-          <h4>{language === "es" ? "Trabaja conmigo" : "Work with me"}</h4>
+          <h4><ArrowDown />{language === "es" ? "Trabaja conmigo" : "Work with me"}</h4>
           <form id="myForm">
             <label for="name">{language === "es" ? "Nombre" : "Name"}</label>
             <input type="text" id="name" name="name" required 
@@ -232,7 +232,7 @@ const language = Astro.props.language;
           background-size: 200px 200px;
           animation: move-it 3s 0.5s linear infinite;
         }
-        @media (max-width: 767px) {
+        @media (max-width: 950px) {
           grid-template-columns: 1fr;
         }
         & .photo {
@@ -243,7 +243,7 @@ const language = Astro.props.language;
           opacity: 0.8;
           position: relative;
           z-index: 1;
-          @media (max-width: 767px) {
+          @media (max-width: 950px) {
             aspect-ratio: auto;
             max-width: 140px;
           }
@@ -403,6 +403,16 @@ const language = Astro.props.language;
       opacity: 1;
       margin-bottom: 30px;
       margin-left: 8px;
+      position: relative;
+      & svg {
+        width: 36px;
+        height: auto;
+        color: #fca728;
+        position: absolute;
+        top: -3px;
+        left: -70px;
+        transform: rotate(-90deg);
+      }
     }
     & label {
       font-size: 21px;
