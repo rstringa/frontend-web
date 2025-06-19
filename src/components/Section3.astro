@@ -78,7 +78,7 @@ const language = Astro.props.language;
           </div>
         </div>
         <!-- Card After -->
-        <div class="card-after">
+        <!-- <div class="card-after">
           <p>
             {
               language === "es"
@@ -86,11 +86,20 @@ const language = Astro.props.language;
                 : "Are you a web development agency or a professional in the industry?"
             }
           </p>
-        </div>
+        </div> -->
         <!-- Form -->
         <div class="form">
           <div class="box-envelop"><Envelop/></div>
           <h4><ArrowDown />{language === "es" ? "Trabaja conmigo" : "Work with me"}</h4>
+          <div class="card-after">
+            <p>
+              {
+                language === "es"
+                  ? "¿Eres una agencia de desarrollo web o un profesional del rubro?"
+                  : "Are you a web development agency or a professional in the industry?"
+              }
+            </p>
+          </div>
           <form id="myForm">
             <label for="name">{language === "es" ? "Nombre" : "Name"}</label>
             <input type="text" id="name" name="name" required 
@@ -110,7 +119,7 @@ const language = Astro.props.language;
             <input
               type="submit"
               
-              value={language === "es" ? "Ok, enviar" : "Ok, I send"}
+              value={language === "es" ? "Enviar" : "Send"}
               class="btn-send"
             />
             <div class="message"></div>
@@ -401,7 +410,7 @@ const language = Astro.props.language;
       font-weight: 600;
       color: #fff;
       opacity: 1;
-      margin-bottom: 30px;
+      margin-bottom:0px;
       margin-left: 8px;
       position: relative;
       & svg {
@@ -488,8 +497,8 @@ const language = Astro.props.language;
 
     & .btn-send {
       font-size: 21px;
-      font-weight: 600;
-      text-transform: capitalize;
+      font-weight: 400;
+      text-transform: uppercase;
       background-color: #ff9800;
       color: #111;
       padding: 16px 30px;
@@ -577,6 +586,8 @@ const language = Astro.props.language;
       opacity: 0.8;
       letter-spacing: 0.025rem;
       font-weight: 200;
+      margin-bottom: 24px;
+      margin-top: 8px;
     }
     @media (max-width: 767px) {
       transform: translateY(60px);
