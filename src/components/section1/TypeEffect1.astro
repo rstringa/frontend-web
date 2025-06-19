@@ -26,6 +26,10 @@ const language = Astro.props.language;
   animation: 
     typing 3.5s 1s steps(30, end) forwards,
     blink-caret .5s step-end 20;
+    @media (max-width: 680px) {
+      font-size: 18px;
+      letter-spacing: 0;
+    }
 }
 
 /* The typing effect */
