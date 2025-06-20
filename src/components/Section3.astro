@@ -241,6 +241,9 @@ const language = Astro.props.language;
           );
           background-size: 200px 200px;
           animation: move-it 3s 0.5s linear infinite;
+          & .name svg {
+                animation: right 2.5s ease-in infinite;
+              }
         }
         @media (max-width: 950px) {
           grid-template-columns: 1fr;
@@ -300,6 +303,7 @@ const language = Astro.props.language;
                 width: 19px;
                 margin-left: 4px; 
               }
+             
               & i {
                 background: #fca728;
                 display: flex;
@@ -637,6 +641,27 @@ const language = Astro.props.language;
     }
     100% {
       transform: rotate(360deg);
+    }
+  }
+  @keyframes right {
+    0% {
+      transform: translateX(0) rotate(-90deg);
+    }
+    10% {
+      transform: translateX(3px) rotate(-90deg);
+    }
+    20% {
+      transform: translateX(0) rotate(-90deg);
+    }
+    30% {
+      transform: translateX(3px) rotate(-90deg);
+    }
+    40% {
+      transform: translateX(0) rotate(-90deg);
+    }  
+    /* El resto es para esperar */   
+    100% {
+      transform: translateX(0) rotate(-90deg); 
     }
   }
 </style>
