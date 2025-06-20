@@ -39,13 +39,13 @@ const language = Astro.props.language;
             <img src={photo.src} alt="Roberto Stringa" />
           </div>
           <div class="text">
-            <span class="name"
+            <span class="name" id="more-info"
               >Roberto Stringa<i
                 >{
                   language === "es"
                     ? "Diseñador/Desarrollador FrontEnd"
-                    : "Designer / FrontEnd Dev"
-                }</i
+                    : "Designer/FrontEnd Dev"
+                }<ArrowDown /></i
               ></span
             >
             <span class="place">Buenos Aires, Argentina</span>
@@ -67,7 +67,7 @@ const language = Astro.props.language;
               <LinkedIn />
             </a>
           </div>
-          <div class="more-info">
+          <!-- <div class="more-info">
             <span>
               {
                 language === "es"
@@ -75,7 +75,7 @@ const language = Astro.props.language;
                   : "more about me"
               }  
             </span><ArrowDown />
-          </div>
+          </div> -->
         </div>
         <!-- Card After -->
         <!-- <div class="card-after">
@@ -103,7 +103,8 @@ const language = Astro.props.language;
           <form id="myForm">
             <label for="name">{language === "es" ? "Nombre" : "Name"}</label>
             <input type="text" id="name" name="name" required 
-            placeholder={language === "es" ? "Tu nombre" : "Your name"} 
+            placeholder={language === "es" ? "Tu nombre" : "Your name"
+          } 
             />
             <label for="email">{language === "es" ? "Email" : "Email"}</label>
             <input type="email" id="email" name="email" required 
@@ -293,13 +294,20 @@ const language = Astro.props.language;
               text-transform: uppercase;
               margin-bottom: 20px;
               letter-spacing: 0.5px;
+              cursor: pointer;
+              & svg {
+                transform: rotate(-90deg);
+                width: 19px;
+                margin-left: 4px; 
+              }
               & i {
                 background: #fca728;
-                display: block;
+                display: flex;
+                align-items: center;
                 width: fit-content;
                 border-radius: 25px;
                 color: #111;
-                padding: 0 10px;
+                padding: 3px 10px;
                 position: relative;
                 left: -10px;
                 margin-top: 0px;
@@ -390,7 +398,7 @@ const language = Astro.props.language;
         font-family: inherit;
         font-size: 14px;
         color:var(--white-50);
-        opacity: 0.25;} 
+        opacity: 0;} 
   .form {
     display: flex;
     flex-direction: column;
@@ -634,7 +642,7 @@ const language = Astro.props.language;
 </style>
 
 <script>
-  const moreInfo = document.querySelector(".more-info");
+  const moreInfo = document.querySelector("#more-info");
   const boxMoreInfo = document.querySelector(".box-more-info");
   const close = document.querySelector(".close");
 
