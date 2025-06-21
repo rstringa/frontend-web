@@ -1,66 +1,38 @@
 [
   {
-    "name": "FrontEnd Web",
-    "url": "https://kasian.com/"
+    "name": "Kasian Architecture",
+    "url": "https://kasian.com/",
+    "image": "./projects/kasian.webp",
+    "technologies": "WordPress, PHP, CSS, JavaScript"
   },
   {
-    "name": "FrontEnd Web",
-    "url": "https://www.lamarencalma.com/"
+    "name": "Escuela Náutica 'La mar en calma'",
+    "url": "https://www.lamarencalma.com/",
+    "image": "./projects/lamarencalma.webp",
+    "technologies": "WordPress, Elementor, CSS, JavaScript"
   },
   {
-    "name": "FrontEnd Web",
-    "url": "https://webstarted.com/"
+    "name": "Webstarted",
+    "url": "https://webstarted.com/",
+    "image": "./projects/webstarted.webp",
+    "technologies": "Astro, Tailwind CSS, JavaScript"
   },
   {
-    "name": "FrontEnd Web",
-    "url": "https://gentlecan.es/"
+    "name": "Belvillage",
+    "url": "https://belvillage.com/",
+    "image": "./projects/belvillage.webp",
+    "technologies": "WordPress, Elementor, CSS, JavaScript"
   },
   {
-    "name": "FrontEnd Web",
-    "url": "https://belvillage.com/"
+    "name": "Strive Training",
+    "url": "https://strivetraining.co.uk/",
+    "image": "./projects/strivetraining.webp",
+    "technologies": "WordPress, PHP, Tailwind, JavaScript"
   },
   {
-    "name": "FrontEnd Web",
-    "url": "https://debropers.com/"
-  },
-  {
-    "name": "FrontEnd Web",
-    "url": "https://poolconcept.es/"
-  },
-  {
-    "name": "FrontEnd Web",
-    "url": "https://netk2.com/"
-  },
-  {
-    "name": "FrontEnd Web",
-    "url": "https://strivetraining.co.uk/"
-  },
-  {
-    "name": "FrontEnd Web",
-    "url": "https://www.rocketbadge.co.uk/"
-  },
-  {
-    "name": "FrontEnd Web",
-    "url": "https://www.rocketproducts.co.uk/"
-  },
-  {
-    "name": "FrontEnd Web",
-    "url": "https://codesaverapp.vercel.app/"
-  },
-  {
-    "name": "FrontEnd Web",
-    "url": "https://masfoodlovers.com/"
-  },
-  {
-    "name": "FrontEnd Web",
-    "url": "https://esr.solar/"
-  },
-  {
-    "name": "FrontEnd Web",
-    "url": "https://colegiolincoln.edu.ar/"
-  },
-  {
-    "name": "FrontEnd Web",
-    "url": "http://www.sala420.com/"
+    "name": "Rocket Badge",
+    "url": "https://www.rocketbadge.co.uk/",
+    "image": "./projects/rocketbadge.webp",
+    "technologies": "Astro, CSS, JavaScript"
   }
 ]
