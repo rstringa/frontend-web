@@ -255,7 +255,8 @@ const language = Astro.props.language;
           overflow: hidden;
           opacity: 0.8;
           position: relative;
-          z-index: 1;
+          z-index: 1; 
+          cursor: pointer;
           @media (max-width: 950px) {
             aspect-ratio: auto;
             max-width: 140px;
@@ -673,6 +674,12 @@ const language = Astro.props.language;
   const moreInfo = document.querySelector("#more-info");
   const boxMoreInfo = document.querySelector(".box-more-info");
   const close = document.querySelector(".close");
+  const photo = document.querySelector(".photo");
+
+  photo?.addEventListener("click", (e) => {
+    e.preventDefault();
+    boxMoreInfo?.classList.add("showing");
+  });
 
   moreInfo?.addEventListener("click", (e) => {
     e.preventDefault();
