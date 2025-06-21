@@ -1,0 +1,106 @@
+---
+import Close from "@components/section3/Close.astro";
+const language = Astro.props.language;
+import work from "@data/work.json";
+
+---
+
+<dialog id="modal-work">
+    <div class="modal-inner">
+        <div class="modal-close">
+            <Close />
+        </div>
+        <div class="modal-grid">
+            <div class="modal-info">
+                <p>
+                    <span class="modal-work-label">
+                        {language === "es" ? "Nombre del proyecto:" : "Project name:"}
+                    </span>
+                    <span class="modal-work-name"></span>
+                </p>
+                <p>
+                    <span class="modal-work-label">
+                        {language === "es" ? "Tecnologías utilizadas:" : "Used technologies:"}
+                    </span>
+                    <span class="modal-work-technologies"></span>
+                </p>
+                <p>
+                    <span class="modal-work-label">
+                        {language === "es" ? "Url del proyecto:" : "Project url:"}
+                    </span>
+                    <a class="modal-work-url" href="#"></a>
+                </p>
+            </div>
+            <div class="modal-work-image">
+                {
+                    work.map((workItem, idx) => (
+                        <img
+                            src={workItem.image}
+                            alt={workItem.name}
+                            class="modal-work-image-item"
+                            width="1250"
+                            height="700"
+                            loading="lazy"
+                            />
+                        ))
+                }
+            </div>
+        </div>
+    </div>
+</dialog>
+
+<style>
+#modal-work {
+    border: 0;
+    padding: 0;
+    width: 1250px;
+    max-width: 95%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    color: #fff;
+}
+#modal-work::backdrop {
+    background: transparent;
+    backdrop-filter: blur(80px);
+}
+#modal-work .modal-inner {
+    padding: 0px;
+    background: #143d60;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+#modal-work .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+}
+#modal-work .modal-grid {
+    position: relative;
+}
+#modal-work .modal-info {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 24px;
+    height: fit-content;
+    background: rgba(20, 61, 96, 1);
+    z-index: 5;
+
+}    
+#modal-work .modal-work-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+#modal-work .modal-work-image img {
+    content-visibility: auto;
+    width: 100%;
+    object-fit: cover;
+    object-position: top left;
+} 
+</style>
