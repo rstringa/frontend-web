@@ -14,5 +14,9 @@
     "@vercel/analytics": "^1.5.0",
     "astro": "^5.4.2",
     "resend": "^4.4.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

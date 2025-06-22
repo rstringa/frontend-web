@@ -2,12 +2,15 @@
 import work from "@data/work.json";
 import Click from "@components/section2/ClickIcon.astro";
 import Click2 from "@components/section2/ClickIcon2.astro";
+import WorkModal from "@components/section2/WorkModal.astro";
+const language = Astro.props.language;
 ---
 
 {
   work.map((workItem, index) => (
     <>
       <a
+        data-index={index}
         class={`work-item work-item-${index}`}
         style={`animation-delay:${index * 0.15}s`}
         href={workItem.url}
@@ -19,17 +22,115 @@ import Click2 from "@components/section2/ClickIcon2.astro";
           <Click />
         </span>
       </a>
-      {/* {index > 0 && (index + 1) % 5 === 0 && (
-        <div class="more"><span>VIEW ALL</span></div>
-      )} */}
+      
     </>
   ))
 }
+<WorkModal language={language} />
 
 <script>
-  // Add .animated class when the element is in the viewport using intersection observer
+  import work from "@data/work.json";
+  
   const workItems = document.querySelectorAll(".work-item");
+  const closeButton = document.querySelector(".modal-close");
+  const modal = document.getElementById("modal-work") as HTMLDialogElement;
+  const modalArrows = document.querySelectorAll(".modal-arrow");
+  const modalArrowPrev = document.querySelector(".modal-arrow-prev");
+  const modalArrowNext = document.querySelector(".modal-arrow-next");
+  const body = document.querySelector("body");
+  let workIndex = 0;
+    // Precarga de imágenes en segundo plano
+  document.addEventListener("DOMContentLoaded", () => {
+    work.forEach(item => {
+      if (item.image) {
+        const img = new window.Image();
+        img.src = item.image;
+      }
+    });
+  });
 
+  // Open the dialog when a work item is clicked
+  workItems.forEach((workItem) => {
+    workItem.addEventListener("click", (event) => {
+      event.preventDefault();
+      modal.showModal();
+      workIndex = workItem ? parseInt(workItem.getAttribute("data-index") ?? "0") || 0 : 0;
+      showInfo(workIndex);
+    });
+  });
+
+  // Close Dialog
+  closeButton?.addEventListener("click", () => {
+    modal.close();
+  });
+
+  body?.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.close();
+    }
+  });
+ 
+  // PREV / NEXT ARROWS
+  modalArrowNext?.addEventListener("click", (event) => {
+    event.preventDefault();
+    if ( workIndex >= work.length - 1) {
+      modalArrowNext.classList.add("disabled");
+      return;
+    }
+    modalArrowPrev?.classList.remove("disabled");
+    workIndex ++;
+    showInfo(workIndex);
+  });
+
+  modalArrowPrev?.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (workIndex <= 0 ) {
+      modalArrowPrev.classList.add("disabled");
+      return;
+    }
+    modalArrowNext?.classList.remove("disabled");
+    workIndex --;
+    showInfo(workIndex);
+  });
+
+   // SHOW INFO IN MODAL
+   function showInfo(workIndex) {
+    // Reset arrows
+    modalArrowPrev?.classList.remove("disabled");
+    modalArrowNext?.classList.remove("disabled");
+    if (workIndex <= 0 ) {
+      modalArrowPrev?.classList.add("disabled");
+    }
+    if ( workIndex >= work.length - 1) {
+      modalArrowNext?.classList.add("disabled");
+      
+    } 
+    // Work Image
+    const allImageItems = document.querySelectorAll(".modal-work-image-item");
+    allImageItems.forEach((item) => {
+      (item as HTMLElement).style.display = "none"; // Hide all images first
+    });
+  const workImageItem = document.querySelector(`.modal-work-image-item:nth-of-type(${workIndex + 1})`);
+  if (workImageItem) {
+    (workImageItem as HTMLElement).style.display = "block";
+  }
+
+    // Work Name
+    const workName = document.querySelector(".modal-work-name") as HTMLDivElement;
+    workName.textContent = work[workIndex].name;
+
+    // Work Technologies
+    const workTechnologies =  document.querySelector(".modal-work-technologies") as HTMLDivElement;
+    workTechnologies.textContent = work[workIndex].technologies ?? "";
+
+    // Work URL
+    const workUrl = document.querySelector(".modal-work-url") as HTMLAnchorElement;
+    workUrl.textContent = work[workIndex].url;
+    workUrl.href = work[workIndex].url;
+
+  }
+
+  // Add .animated class when the element is in the viewport using intersection observer
   workItems.forEach((workItem) => {
     const workItemRect = workItem.getBoundingClientRect();
     const observer = new IntersectionObserver((entries) => {
@@ -133,7 +234,7 @@ import Click2 from "@components/section2/ClickIcon2.astro";
       }
     }
   }
-  .work-item:nth-child(n + 9) {
+  .work-item:nth-of-type(n + 9) {
     display: none;
   }
 

@@ -37,7 +37,50 @@ const language = Astro.props.language;
       </div>
     </div>
     <div class="list">
-      <WorkList />
+      <h2>
+        {language === "es" ? "Sobre mí" : "About me"}
+      </h2>
+      <p>
+        {
+          language === "es" ? (
+            <>
+              Mi nombre es Roberto, soy diseñador y desarrollador web frontend con <strong>más de 10 años de 
+              experiencia.</strong> De Buenos Aires, Argentina.
+              <br />
+              He trabajado en Agencias de diseño y marketing, actualmente trabajo
+              de forma independiente.
+              <br />
+              Cuento con amplia experiencia en el diseño y desarrollo de sitios y
+              aplicaciones web.
+              <br />
+              Mi objetivo es ayudar a empresas y profesionales a crear sus
+              productos digitales brindando mis conocimientos y creatividad.
+              <br />
+              Comprometido y responsable con el trabajo, busco que el cliente quede satisfecho con el resultado final.
+            </>
+          ) : (
+            <>
+              My name is Roberto, I'm a web frontend designer and developer with <strong>more than 10 years of experience</strong> in web development.
+              I'm from Buenos Aires, Argentina.
+              <br />I have worked for design agencies and marketing, currently I
+              work independently.
+              <br />I have extensive experience in designing and developing
+              websites and applications.
+              <br />
+              My goal is to help companies and professionals create their digital
+              products, providing my knowledge and creativity.
+              <br />
+              Committed and responsible with the work, I seek that the client is satisfied with the final result.
+            </>
+          )
+        }
+      </p>
+      <h3>
+        {language === "es" ? "Aquí tienes una selección de mis proyectos más recientes" : "Here is a selection of my latest projects"}
+      </h3>
+      <WorkList language={language} />
+      
+        
     </div>
     <!-- <div class="more"><span>VIEW MORE PROJECTS<ArrowDown /></span></div> -->
   </div>
@@ -101,6 +144,10 @@ const language = Astro.props.language;
       left: 7px;
       margin: 0 auto;
       height: 100%;
+      min-height: 100dvh;
+      @media (max-width: 767px) {
+        min-height: 120dvh; 
+      }
       & .title {
         display: flex;
         flex-direction: column;
@@ -110,6 +157,9 @@ const language = Astro.props.language;
         height: 100%;
         position: relative;
         border-right: 1px solid #ffffff45;
+        @media (max-width: 767px) {
+            border: none;
+          }
         &::after {
           content: "";
           position: absolute;
@@ -133,6 +183,9 @@ const language = Astro.props.language;
           z-index: 2;
           line-height: 0;
           left: -4px;
+          @media (max-width: 767px) {
+            display: none;
+          }
         }
         .glitch-clone {
           animation:glitch 10s linear 5;
@@ -170,6 +223,37 @@ const language = Astro.props.language;
         padding: 80px 0 80px 0;
         position: relative;
         z-index: 15;
+        & p {
+          text-align: left;   
+          text-wrap: pretty;      
+          align-self: start;
+          color: #fff;
+          margin-bottom: 32px;
+          font-size: 16px; 
+          line-height: 1.75;
+          color: #fff;
+          opacity: 0.95;
+          letter-spacing: 0.025rem;
+          font-weight: 200;
+        }
+        & br {
+          margin-bottom: 16px;
+        }
+        & h2 {
+          text-align: left;         
+          align-self: start;
+          color: #fff;
+          margin-bottom:0px;
+          font-weight: 600;
+        }
+        & h3 {
+          text-align: left;
+          align-self: start;
+          color: #fff;
+          margin-bottom: 32px;
+          font-weight: 600;
+          font-size: 24px;
+        }
         @media (max-width: 767px) {
           width: calc(100vw - 60px);
           transform: translateX(-120px);
@@ -225,6 +309,7 @@ const language = Astro.props.language;
         z-index: 5;
         background-color: var(--bg-color);
         transition: background-color 0.3s ease;
+        display: none;
         & svg {
           /* transform: rotate(180deg); */
           margin-left: 10px;

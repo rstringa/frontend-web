@@ -10,7 +10,7 @@ import TypeEffect1 from "@components/section1/TypeEffect1.astro";
 import Facemask from "@components/section1/Facemask.astro";
 import Eye from "@components/section1/Eye.astro";
 import Dron from "@components/Dron.astro";
-
+import ArrowDown from "./section2/ArrowDown.astro";
 // Get language from component in Index.astro
 const language = Astro.props.language;
 ---
@@ -34,7 +34,7 @@ const language = Astro.props.language;
     <TypeEffect1 language={language} />
     <div class="box-lines">
       <div class="box-type_effect">
-        <span>{language === "es" ? "Hola, " : "Hi, "}</span><TypeEffect
+        <span> >> </span><TypeEffect
           language={language}
         />
       </div>
