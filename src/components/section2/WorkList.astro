@@ -39,6 +39,8 @@ const language = Astro.props.language;
   const modalArrowNext = document.querySelector(".modal-arrow-next");
   const body = document.querySelector("body");
   let workIndex = 0;
+  let touchStartX = 0;
+  let touchEndX = 0;
     // Precarga de imágenes en segundo plano
   document.addEventListener("DOMContentLoaded", () => {
     work.forEach(item => {
@@ -104,6 +106,32 @@ const language = Astro.props.language;
       modal.close();
     }
   });
+
+  // Swipe events
+  function handleTouchStart(event) {
+    if (!modal.open) return;
+    touchStartX = event.changedTouches[0].screenX;
+  }
+
+  function handleTouchEnd(event) {
+    if (!modal.open) return;
+    touchEndX = event.changedTouches[0].screenX;
+    handleGesture();
+  }
+
+  function handleGesture() {
+    if (touchEndX < touchStartX - 50) {
+      // Swipe left (siguiente)
+      (modalArrowNext as HTMLButtonElement)?.click();
+    }
+    if (touchEndX > touchStartX + 50) {
+      // Swipe right (anterior)
+      (modalArrowPrev as HTMLButtonElement)?.click();
+    }
+  }
+
+  modal.addEventListener('touchstart', handleTouchStart, false);
+  modal.addEventListener('touchend', handleTouchEnd, false);
 
    // SHOW INFO IN MODAL
    function showInfo(workIndex) {
