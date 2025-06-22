@@ -25,35 +25,44 @@ const language = Astro.props.language;
       {
         language === "es" ? (
           <>
-            Mi nombre es Roberto, soy diseñador y desarrollador web frontend con más de 10 años de 
-            experiencia en desarrollo web.
-            <br />
-            He trabajado en Agencias de diseño y marketing, actualmente trabajo
-            de forma independiente.
-            <br />
-            Cuento con amplia experiencia en el diseño y desarrollo de sitios y
-            aplicaciones web.
-            <br />
-            Mi objetivo es ayudar a empresas y profesionales a crear sus
-            productos digitales brindando mis conocimientos y creatividad.
+            <p>Soy un aprendiz constante de nuevas tecnologías y tendencias en el
+            desarrollo web. Me apasiona crear experiencias digitales únicas y
+            atractivas que conecten con los usuarios.</p>
+            <p>
+              Me encanta trabajar en equipo y colaborar con otros profesionales
+              para lograr resultados excepcionales. Siempre estoy abierto a
+              aprender de los demás y compartir mis conocimientos.
+            </p>
+            <p>
+              Si estás buscando un diseñador y desarrollador web apasionado y
+              comprometido, ¡no dudes en contactarme! Estoy aquí para ayudarte a
+              llevar tu proyecto al siguiente nivel.
+            </p>
           </>
         ) : (
           <>
-            My name is Roberto, I'm a web frontend designer and developer with over 10 years of experience in web development.
-            <br />I have worked for design agencies and marketing, currently I
-            work independently.
-            <br />I have extensive experience in designing and developing
-            websites and applications.
-            <br />
-            My goal is to help companies and professionals create their digital
-            products, providing my knowledge and creativity.
+            <p>I am a constant learner of new technologies and trends in web
+            development. I am passionate about creating unique and engaging
+            digital experiences that connect with users.</p>
+            <p>
+              I love working in teams and collaborating with other professionals
+              to achieve exceptional results. I am always open to learning from
+              others and sharing my knowledge.
+            </p>
+            <p>
+              If you are looking for a passionate and committed web designer and
+              developer, do not hesitate to contact me! I am here to help you
+              take your project to the next level.
+            </p>
           </>
         )
       }
     </p>
     <br />
     <br class="mobile-hidden" />
-    <h3>{ language ==="es" ? "Tecnologías" : "Technologies"}</h3>
+    <h3>{ language ==="es" 
+    ? "Algunas tecnologías con las que trabajo" 
+    : "Some technologies I work with"}</h3>
     <div class="grid-tech">
       <Html />
       <CSS />

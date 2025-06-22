@@ -12,27 +12,13 @@ import work from '@data/work.json'
 					<Close />
 				</div>
 				<div class="modal-arrows">
-					<a href="#" title="Previous work" class="modal-arrow modal-arrow-prev">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="#111"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg
-						>
+					<a href="#" title={language === 'es' ? 'Trabajo anterior' : 'Previous work'} class="modal-arrow modal-arrow-prev">
+						
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-down-dashed"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5v.5m0 3v1.5m0 3v6"></path><path d="M18 13l-6 6"></path><path d="M6 13l6 6"></path></svg>
+			
 					</a>
-					<a href="#" title="Next work" class="modal-arrow modal-arrow-next">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="#111"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg
-						>
+					<a href="#" title={language === 'es' ? 'Trabajo siguiente' : 'Next work'} class="modal-arrow modal-arrow-next">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-down-dashed"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5v.5m0 3v1.5m0 3v6"></path><path d="M18 13l-6 6"></path><path d="M6 13l6 6"></path></svg>
 					</a>
 				</div>
 				<p>
@@ -80,16 +66,16 @@ import work from '@data/work.json'
 		max-width: 95%;
 		color: #111;
 		background: transparent;
-		transform: translateY(-100px); 
-		transition: opacity 2s ease, transform 1s ease;
+		
+		transition: opacity 2s ease;
 		opacity: 0;
 	}
 	#modal-work[open] {
 		opacity: 1;
-		transform: translateY(0);
+	
 		@starting-style {
       		opacity: 0;
-			transform: translateY(-100px); 
+			
     	}
 	}
 	#modal-work::backdrop {
@@ -141,7 +127,7 @@ import work from '@data/work.json'
 		width: 340px;
 		height: 100%;
 		padding: 52px 32px 25px 32px;
-		background: rgb(218 222 226);
+		background: rgb(247 250 252);
 		z-index: 5;
 		box-shadow: -5px 0 7px #15151f4d;
 		@media (max-width: 767px) {
@@ -151,7 +137,11 @@ import work from '@data/work.json'
     		padding-bottom: 6px;
 			position: relative;
 			order:2;
+			& p {
+				margin-bottom: 24px;
+			}
 		}
+		
 		& p span {
 			text-wrap: pretty;
 		}
@@ -161,14 +151,18 @@ import work from '@data/work.json'
 		width: 100%;
 		font-weight: 600;
 		color: #143d60;
+		font-size: 15px;
 	}
 	#modal-work .modal-work-image {
 		width: 100%;
 		height: 100%;
 		background-size: cover;
 		background-position: center;
+		
+    	overflow: hidden;
 		@media (max-width: 767px) {
 			max-height: 50vh;
+			overflow: auto;
 		}
 	}
 	#modal-work .modal-work-image img {
@@ -177,10 +171,13 @@ import work from '@data/work.json'
 		display: block;
 		object-fit: cover;
 		object-position: top left;
+		border: 5px solid #EFF;
+		border-radius: 12px;
+		
 		@media (max-width: 767px) {
-			object-fit: contain;
-    		scale: 1.5;
-    		transform-origin: left top;
+			
+			border: 3px solid #EFF;
+	
 		}
 	}
 	#modal-work p {
@@ -203,6 +200,7 @@ import work from '@data/work.json'
 		width: fit-content;
 		display: flex;
 		justify-content: space-between;
+		gap: 16px;
 		@media (max-width: 767px) {
 			left: 17px;
 			gap:10px;
@@ -218,6 +216,12 @@ import work from '@data/work.json'
 		& a.disabled {
 			opacity: 0.25;
 			pointer-events: none;
+		}
+		& .modal-arrow-prev {
+			transform: rotate(90deg);
+		}
+		& .modal-arrow-next {
+			transform: rotate(-90deg);
 		}
 	}
 </style>
