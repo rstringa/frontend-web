@@ -1,180 +1,223 @@
 ---
-import Close from "@components/section3/Close.astro";
-const language = Astro.props.language;
-import work from "@data/work.json";
+import Close from '@components/section3/Close.astro'
+const language = Astro.props.language
+import work from '@data/work.json'
 ---
 
 <dialog id="modal-work">
-    <div class="modal-inner">
-      
-        <div class="modal-grid">
-            <div class="modal-info">
-                <div class="modal-close">
-                    <Close />
-                </div>
-                <div class="modal-arrows">
-                    <a href="#" title="Previous work" class="modal-arrow modal-arrow-prev">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                    </a>
-                    <a href="#" title="Next work" class="modal-arrow modal-arrow-next">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </a>
-                </div>
-                <p>
-                    <span class="modal-work-label">
-                        {language === "es" ? "Nombre del Proyecto" : "Project Name"}
-                    </span>
-                    <span class="modal-work-name"></span>
-                </p>
-                <p>
-                    <span class="modal-work-label">
-                        {language === "es" ? "Tecnologías Utilizadas" : "Technologies Used"}
-                    </span>
-                    <span class="modal-work-technologies"></span>
-                </p>
-                <p>
-                    <span class="modal-work-label">
-                        {language === "es" ? "Sitio web" : "Website"}
-                    </span>
-                    <a class="modal-work-url" href="#" target="_blank"></a>
-                </p>
-            </div>
-            <div class="modal-work-image">
-                {
-                    work.map((workItem, idx) => (
-                        <img
-                            src={workItem.image}
-                            alt={workItem.name}
-                            class="modal-work-image-item"
-                            width="1250"
-                            height="700"
-                            loading="lazy"
-                            />
-                        ))
-                }
-            </div>
-        </div>
-    </div>
+	<div class="modal-inner">
+		<div class="modal-grid">
+			<div class="modal-info">
+				<div class="modal-close">
+					<Close />
+				</div>
+				<div class="modal-arrows">
+					<a href="#" title="Previous work" class="modal-arrow modal-arrow-prev">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="#111"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg
+						>
+					</a>
+					<a href="#" title="Next work" class="modal-arrow modal-arrow-next">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="#111"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg
+						>
+					</a>
+				</div>
+				<p>
+					<span class="modal-work-label">
+						{language === 'es' ? 'Nombre del Proyecto' : 'Project Name'}
+					</span>
+					<span class="modal-work-name"></span>
+				</p>
+				<p>
+					<span class="modal-work-label">
+						{language === 'es' ? 'Tecnologías Utilizadas' : 'Technologies Used'}
+					</span>
+					<span class="modal-work-technologies"></span>
+				</p>
+				<p>
+					<span class="modal-work-label">
+						{language === 'es' ? 'Sitio web' : 'Website'}
+					</span>
+					<a class="modal-work-url" href="#" target="_blank"></a>
+				</p>
+			</div>
+			<div class="modal-work-image">
+				{
+					work.map((workItem, idx) => (
+						<img
+							src={workItem.image}
+							alt={workItem.name}
+							class="modal-work-image-item"
+							width="1250"
+							height="700"
+							loading="lazy"
+						/>
+					))
+				}
+			</div>
+		</div>
+	</div>
 </dialog>
 
 <style>
-#modal-work {
-    border: 0;
-    padding: 0;
-    width: 1250px;
-    max-width: 95%;
-    color: #111;
-    background: transparent;
-}
-#modal-work::backdrop {
-    background: #00000038;
-    backdrop-filter: blur(80px);
-}
-#modal-work .modal-inner {
-    padding: 0px;
-    background: #ededed;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    border-radius: 12px;
-    /* Spinner background */
-    background-image:
-      radial-gradient(transparent 60%, #ededed 61%),
-      /* Spinner */
-      url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="24" stroke="%23ff9800" stroke-width="6" stroke-linecap="round" stroke-dasharray="110" stroke-dashoffset="60"><animateTransform attributeName="transform" type="rotate" from="0 30 30" to="360 30 30" dur="1s" repeatCount="indefinite"/></circle></svg>');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 60px 60px;
-    z-index: 1;
-}
-#modal-work .modal-close {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    z-index: 1000;
-    cursor: pointer;
-    &:hover {
-            svg {
-                stroke: #143D60;
-            }
-        }
-}
-#modal-work .modal-grid {
-    position: relative;
-}
-#modal-work .modal-info {
-    position: absolute;
-    top: 0px;
-    bottom: 0;
-    right: 0;
-    width: 340px;
-    height: 100%;
-    padding: 52px 32px 25px 32px;
-    background: rgb(218 222 226);
-    z-index: 5;
-    box-shadow: -5px 0 7px #15151f4d;
-    @media (max-width: 767px) {
-        width: 100%;
-        padding-left: 24px;
-        padding-right: 24px;
-    }
-    & p span {
-        text-wrap: pretty;
-    }
-}
-#modal-work .modal-work-label {
-    display: block;
-    width: 100%;
-    font-weight: 600;
-    color: #143D60;
-}     
-#modal-work .modal-work-image {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-}
-#modal-work p {
-    line-height: 1.5;
-    color: #111;
-    opacity: 1;
-    font-weight:400;
-}  
-#modal-work a {
-    color: #111;
-}
-#modal-work a:hover {
-    color: #143D60;
-}
-#modal-work .modal-work-image img {
-    content-visibility: auto;
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: top left;
-}
-#modal-work .modal-arrows {
-    position: absolute;
-    top: 20px;
-    left: 24px;
-    width: fit-content;
-    display: flex;
-    justify-content: space-between;
-    @media (max-width: 767px) {
-        left: 17px;
-        
-    }
-    & a {
-        width: 24px;
-        &:hover {
-            svg {
-                stroke: #143D60;
-            }
-        }
-    }
-    & a.disabled {
-        opacity:0.25;
-        pointer-events: none;
-    }
-} 
+	#modal-work {
+		border: 0;
+		padding: 0;
+		width: 1250px;
+		max-width: 95%;
+		color: #111;
+		background: transparent;
+		transform: translateY(-100px); 
+		transition: opacity 2s ease, transform 1s ease;
+		opacity: 0;
+	}
+	#modal-work[open] {
+		opacity: 1;
+		transform: translateY(0);
+		@starting-style {
+      		opacity: 0;
+			transform: translateY(-100px); 
+    	}
+	}
+	#modal-work::backdrop {
+		background: #00000038;
+		backdrop-filter: blur(80px);
+	}
+	#modal-work .modal-inner {
+		padding: 0px;
+		background: #ededed;
+		height: 100%;
+		overflow: hidden;
+		position: relative;
+		border-radius: 12px;
+		/* Spinner background */
+		background-image:
+			radial-gradient(transparent 60%, #ededed 61%),
+			/* Spinner */
+				url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="24" stroke="%23ff9800" stroke-width="6" stroke-linecap="round" stroke-dasharray="110" stroke-dashoffset="60"><animateTransform attributeName="transform" type="rotate" from="0 30 30" to="360 30 30" dur="1s" repeatCount="indefinite"/></circle></svg>');
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 60px 60px;
+		z-index: 1;
+	}
+	#modal-work .modal-close {
+		position: absolute;
+		top: 20px;
+		right: 24px;
+		z-index: 1000;
+		cursor: pointer;
+		&:hover {
+			svg {
+				stroke: #143d60;
+			}
+		}
+	}
+	#modal-work .modal-grid {
+		position: relative;
+		@media (max-width: 767px) {
+			display: flex;
+			flex-direction: column;
+			
+		}
+	}
+	#modal-work .modal-info {
+		position: absolute;
+		top: 0px;
+		bottom: 0;
+		right: 0;
+		width: 340px;
+		height: 100%;
+		padding: 52px 32px 25px 32px;
+		background: rgb(218 222 226);
+		z-index: 5;
+		box-shadow: -5px 0 7px #15151f4d;
+		@media (max-width: 767px) {
+			width: 100%;
+			padding-left: 24px;
+			padding-right: 24px;
+    		padding-bottom: 6px;
+			position: relative;
+			order:2;
+		}
+		& p span {
+			text-wrap: pretty;
+		}
+	}
+	#modal-work .modal-work-label {
+		display: block;
+		width: 100%;
+		font-weight: 600;
+		color: #143d60;
+	}
+	#modal-work .modal-work-image {
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+		@media (max-width: 767px) {
+			max-height: 50vh;
+		}
+	}
+	#modal-work .modal-work-image img {
+		content-visibility: auto;
+		width: 100%;
+		display: block;
+		object-fit: cover;
+		object-position: top left;
+		@media (max-width: 767px) {
+			object-fit: contain;
+    		scale: 1.5;
+    		transform-origin: left top;
+		}
+	}
+	#modal-work p {
+		line-height: 1.5;
+		color: #111;
+		opacity: 1;
+		font-weight: 400;
+	}
+	#modal-work a {
+		color: #111;
+	}
+	#modal-work a:hover {
+		color: #143d60;
+	}
+
+	#modal-work .modal-arrows {
+		position: absolute;
+		top: 20px;
+		left: 24px;
+		width: fit-content;
+		display: flex;
+		justify-content: space-between;
+		@media (max-width: 767px) {
+			left: 17px;
+			gap:10px;
+		}
+		& a {
+			width: 24px;
+			&:hover {
+				svg {
+					stroke: #143d60;
+				}
+			}
+		}
+		& a.disabled {
+			opacity: 0.25;
+			pointer-events: none;
+		}
+	}
 </style>
