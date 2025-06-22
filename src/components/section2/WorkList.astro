@@ -92,6 +92,18 @@ const language = Astro.props.language;
     workIndex --;
     showInfo(workIndex);
   });
+  
+  // Agregar navegación con flechas del teclado
+  window.addEventListener("keydown", (event) => {
+    if (!modal.open) return;
+    if (event.key === "ArrowRight") {
+      (modalArrowNext as HTMLButtonElement).click();
+    } else if (event.key === "ArrowLeft") {
+      (modalArrowPrev as HTMLButtonElement).click();
+    } else if ( event.key === "Escape") {
+      modal.close();
+    }
+  });
 
    // SHOW INFO IN MODAL
    function showInfo(workIndex) {

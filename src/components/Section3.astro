@@ -759,6 +759,10 @@ const language = Astro.props.language;
           // La solicitud no fue exitosa
           message.innerHTML =
             "There was an error sending the request. Please try again.";
+            // Reset form fields
+            (document.getElementById("name") as HTMLInputElement).value = "";
+            (document.getElementById("email") as HTMLInputElement).value = "";
+            (document.getElementById("text_area") as HTMLTextAreaElement).value = "";
         }
       } catch (error) {
         // Error en la solicitud
