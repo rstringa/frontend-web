@@ -522,6 +522,9 @@ const language = Astro.props.language;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      position: relative;
+      z-index: 10;
+      
       &:disabled {
         background-color: #ff9800a0;
         cursor: not-allowed; 
