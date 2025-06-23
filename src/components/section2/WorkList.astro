@@ -37,6 +37,10 @@ const language = Astro.props.language;
   const modalArrows = document.querySelectorAll(".modal-arrow");
   const modalArrowPrev = document.querySelector(".modal-arrow-prev");
   const modalArrowNext = document.querySelector(".modal-arrow-next");
+  
+  const modalArrowPrevImage = document.querySelector(".modal-arrows-image .modal-arrow-prev");
+  const modalArrowNextImage = document.querySelector(".modal-arrows-image .modal-arrow-next");
+
   const body = document.querySelector("body");
   let workIndex = 0;
   let touchStartX = 0;
@@ -95,6 +99,12 @@ const language = Astro.props.language;
     showInfo(workIndex);
   });
   
+  modalArrowNextImage?.addEventListener("click", (event) => {
+    (modalArrowNext as HTMLButtonElement).click();
+  });
+  modalArrowPrevImage?.addEventListener("click", (event) => {
+    (modalArrowPrev as HTMLButtonElement).click();
+  });
   // Agregar navegación con flechas del teclado
   window.addEventListener("keydown", (event) => {
     if (!modal.open) return;
@@ -138,12 +148,15 @@ const language = Astro.props.language;
     // Reset arrows
     modalArrowPrev?.classList.remove("disabled");
     modalArrowNext?.classList.remove("disabled");
+    modalArrowPrevImage?.classList.remove("disabled");
+    modalArrowNextImage?.classList.remove("disabled");
     if (workIndex <= 0 ) {
       modalArrowPrev?.classList.add("disabled");
+      modalArrowPrevImage?.classList.add("disabled");
     }
     if ( workIndex >= work.length - 1) {
       modalArrowNext?.classList.add("disabled");
-      
+      modalArrowNextImage?.classList.add("disabled");
     } 
     // Work Image
     const allImageItems = document.querySelectorAll(".modal-work-image-item");

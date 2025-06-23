@@ -7,6 +7,7 @@ import work from '@data/work.json'
 <dialog id="modal-work">
 	<div class="modal-inner">
 		<div class="modal-grid">
+
 			<div class="modal-info">
 				<div class="modal-close">
 					<Close />
@@ -40,6 +41,7 @@ import work from '@data/work.json'
 					<a class="modal-work-url" href="#" target="_blank"></a>
 				</p>
 			</div>
+
 			<div class="modal-work-image">
 				{
 					work.map((workItem, idx) => (
@@ -53,6 +55,16 @@ import work from '@data/work.json'
 						/>
 					))
 				}
+					<div class="modal-arrows-image">
+						<a href="#" title={language === 'es' ? 'Trabajo anterior' : 'Previous work'} class="modal-arrow modal-arrow-prev">
+							
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-down-dashed"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5v.5m0 3v1.5m0 3v6"></path><path d="M18 13l-6 6"></path><path d="M6 13l6 6"></path></svg>
+				
+						</a>
+						<a href="#" title={language === 'es' ? 'Trabajo siguiente' : 'Next work'} class="modal-arrow modal-arrow-next">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-down-dashed"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 5v.5m0 3v1.5m0 3v6"></path><path d="M18 13l-6 6"></path><path d="M6 13l6 6"></path></svg>
+						</a>
+					</div>
 			</div>
 		</div>
 	</div>
@@ -113,12 +125,14 @@ import work from '@data/work.json'
 	}
 	#modal-work .modal-grid {
 		position: relative;
+		display: grid;
+		grid-template-columns: 1fr 340px;
 		@media (max-width: 767px) {
 			display: flex;
 			flex-direction: column;
 			
 		}
-	}
+	} 
 	#modal-work .modal-info {
 		position: absolute;
 		top: 0px;
@@ -158,11 +172,18 @@ import work from '@data/work.json'
 		height: 100%;
 		background-size: cover;
 		background-position: center;
-		
+		position: relative;
     	overflow: hidden;
 		@media (max-width: 767px) {
 			max-height: 50vh;
 			overflow: auto;
+		}
+		&:hover .modal-arrows-image a {
+			opacity: 0.5;
+			color:#fff;
+		}
+		&:hover .modal-arrows-image a:hover {
+			opacity: 1;
 		}
 	}
 	#modal-work .modal-work-image img {
@@ -225,6 +246,43 @@ import work from '@data/work.json'
 		}
 		& .modal-arrow-next {
 			transform: rotate(-90deg);
+		}
+	}
+
+	#modal-work .modal-arrows-image {
+		position: absolute;
+		top: 50%;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		z-index: 10;
+		padding: 0 16px;
+		& a {
+			width: 36px;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+			& svg {
+				width: 100%;
+				height: auto;
+			}
+			&:hover {
+				svg {
+					
+				}
+			}
+		}
+		
+		& a.disabled {
+			opacity: 0!important;
+			pointer-events: none;
+		}
+		& .modal-arrow-prev {
+			transform: rotate(90deg);
+			left:24px;
+		}
+		& .modal-arrow-next {
+			transform: rotate(-90deg);
+			right:24px;
 		}
 	}
 </style>
