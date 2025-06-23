@@ -2,37 +2,37 @@
   {
     "name": "Kasian Architecture",
     "url": "https://kasian.com/",
-    "image": "./projects/kasian.webp",
+    "image": "./projects/kasian-2.webp",
     "technologies": "WordPress, PHP, CSS, JavaScript"
   },
   {
     "name": "Escuela Náutica 'La mar en calma'",
     "url": "https://www.lamarencalma.com/",
-    "image": "./projects/lamarencalma.webp",
+    "image": "./projects/lamarencalma-2.webp",
     "technologies": "WordPress, Elementor, CSS, JavaScript"
   },
   {
     "name": "Webstarted",
     "url": "https://webstarted.com/",
-    "image": "./projects/webstarted.webp",
+    "image": "./projects/webstarted-2.webp",
     "technologies": "Astro, Tailwind CSS, JavaScript"
   },
   {
     "name": "Belvillage",
     "url": "https://belvillage.com/",
-    "image": "./projects/belvillage.webp",
+    "image": "./projects/belvillage-2.webp",
     "technologies": "WordPress, Elementor, CSS, JavaScript"
   },
   {
     "name": "Strive Training",
     "url": "https://strivetraining.co.uk/",
-    "image": "./projects/strivetraining.webp",
+    "image": "./projects/strivetraining-2.webp",
     "technologies": "WordPress, PHP, Tailwind, JavaScript"
   },
   {
     "name": "Rocket Badge",
     "url": "https://www.rocketbadge.co.uk/",
-    "image": "./projects/rocketbadge.webp",
+    "image": "./projects/rocketbadge-2.webp",
     "technologies": "Astro, CSS, JavaScript"
   }
 ]

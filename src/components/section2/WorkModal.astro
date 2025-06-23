@@ -47,7 +47,7 @@ import work from '@data/work.json'
 							src={workItem.image}
 							alt={workItem.name}
 							class="modal-work-image-item"
-							width="1250"
+							width="910"
 							height="700"
 							loading="lazy"
 						/>
@@ -167,7 +167,8 @@ import work from '@data/work.json'
 	}
 	#modal-work .modal-work-image img {
 		content-visibility: auto;
-		width: 100%;
+		width: auto;
+		max-width: 100%;
 		display: block;
 		object-fit: cover;
 		object-position: top left;
@@ -177,7 +178,9 @@ import work from '@data/work.json'
 		@media (max-width: 767px) {
 			
 			border: 3px solid #EFF;
-	
+			object-fit: contain;
+			width: 100%;
+			height: auto;
 		}
 	}
 	#modal-work p {
