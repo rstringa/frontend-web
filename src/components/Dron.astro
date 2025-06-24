@@ -22,7 +22,11 @@
       transform 0.5s ease-in-out,
       margin 1s ease-in-out;
     &:hover {
-      filter: drop-shadow(2px 24px 6px rgba(0, 0, 0, 0.7));
+     
+    }
+    &.clicked {
+     
+  
     }
     @media (max-width: 768px) {
       width: 200px !important;
@@ -55,12 +59,15 @@
   dotLottie.addEventListener("click", (event) => {
      // console.log(event);
      // mousePosition.y += 700;
+     
       if (dronScale) {
         scale = scale * 2.5;
         dronScale = false;
+        dotLottie.classList.add("clicked");
       } else {
         scale = scale / 2.5;
         dronScale = true;
+        dotLottie.classList.remove("clicked");
       }
       update();
     });

@@ -160,7 +160,9 @@ const language = Astro.props.language;
     position: absolute;
     z-index: 10;
     bottom: 0;
-    left: calc(50% - 50px);
+    left: calc(50% - 20px);
+    scale:1.25;
+    background: #FF9500;
     animation: glitch-text 5s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite
       alternate;
     &:hover {
@@ -169,6 +171,7 @@ const language = Astro.props.language;
     }
     @media (max-width: 768px) {
       left: calc(50% - 25px);
+      scale:1.15;
     }
     & a {
       color: #111;
@@ -196,7 +199,7 @@ const language = Astro.props.language;
     }
     & .lines {
       position: relative;
-      overflow: hidden;
+      /* overflow: hidden; */
       max-width: 100vw;
       & .image-lines {
         min-width: 1250px;
