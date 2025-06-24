@@ -487,7 +487,9 @@ const language = Astro.props.language;
       margin-bottom: 26px;
       width: 100%;
       max-width: 710px;
-     
+      &:hover {
+        border-color: #ffffff75;
+      }
       &:focus {
         outline: none;
         border-color: #ffffff75;
@@ -497,7 +499,7 @@ const language = Astro.props.language;
         border-color: #02d622e6;
       } 
       &:is(:user-invalid) {
-        border-color: #fe5500d5;
+        /* border-color: #fe5500d5; */
       } 
     }
     & textarea {
