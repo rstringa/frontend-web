@@ -99,9 +99,13 @@
 
   function update() {
     scrollY = body ? body.scrollTop : 0;
-    
     if (dotLottie && scrollY <= (viewportHeight) ) {
-      dotLottie.style.setProperty("left", `${mousePosition.x}px`);
+      const dronWidth = dotLottie.offsetWidth * scale;
+      const maxLeft = window.innerWidth - dronWidth;
+      let left = mousePosition.x;
+      if (left > maxLeft) left = maxLeft;
+      if (left < 0) left = 0;
+      dotLottie.style.setProperty("left", `${left}px`);
       dotLottie.style.setProperty("top", `${mousePosition.y}px`);
       dotLottie.style.setProperty("transform", `scale(${scale})`);
     }
