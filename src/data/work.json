@@ -34,5 +34,11 @@
     "url": "https://www.rocketbadge.co.uk/",
     "image": "./projects/rocketbadge-2.webp",
     "technologies": "Astro, CSS, JavaScript"
+  },
+  {
+    "name": "Personal Project: CodeSaverApp",
+    "url": "http://codesaverapp.vercel.app/",
+    "image": "./projects/codesaverapp.webp",
+    "technologies": "Astro, Tailwind, Supabase, JavaScript"
   }
 ]
